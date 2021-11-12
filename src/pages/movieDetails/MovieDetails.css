@@ -1,0 +1,78 @@
+.shadow-cont.moviedetails-cont{
+    width:800px;
+    height:300px;
+    background-color: #000;
+}
+
+.moviedetails-image{
+    height:250px;
+}
+
+
+.moviedetails-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.moviedetails-h1{
+    font-weight: normal;
+    width:100%;
+    display: block;
+    color:#FFF;
+    font-size: 1.7rem;
+    margin:0 0 35px 45px;
+}
+
+.moviedetails-description{
+    color:#FFF;
+    font-size: 0.7rem;
+    margin: 0 0 35px 45px;
+}
+
+
+.moviedetails-rating{
+    color:#FFF;
+    margin: 0 0 0 45px;
+}
+
+.moviedetails-spanrating{
+    color:var(--orange);
+    font-weight: bold;
+    font-size: 1.5rem;
+
+}
+
+.moviedetails-btn-cont{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin:40px 0 35px 45px;
+}
+
+
+
+.default-btn.moviedetails-addreview-btn{
+    min-width: 90px;
+    border-radius: 4px;
+    padding: 5px 10px;
+    height:25px;
+    align-items: start;
+    margin-right: 10px;
+    background: linear-gradient(rgba(59,193,37,100) 0%, rgba(5,120,3,1) 100%);
+    color:#FFFFFFFF;
+}
+
+.default-btn.moviedetails-addreview-btn:hover{
+    color: #6eb824;
+}
+
+
+.shadow-cont.moviedetails-reviews-title-cont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0 0 0;
+    width:750px;
+    background: linear-gradient(rgba(243,187,0,1) 0%, rgb(219, 120, 0) 100%);
+    height:40px;
+}

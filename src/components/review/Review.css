@@ -1,0 +1,14 @@
+.shadow-cont.review-cont-grey{
+    background-color: #9e9e9e;
+    width:750px;
+    margin: 10px 0 0 0;
+}
+
+.shadow-cont.review-cont-red{
+   border: 2px solid #fa2b2b;
+    background-color: #9e9e9e;
+    width:750px;
+    margin: 10px 0 0 0;
+}
+
+

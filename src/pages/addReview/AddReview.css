@@ -1,0 +1,35 @@
+.shadow-cont.review-input-cont{
+    background-color: var(--lightgrey2);
+    width:750px;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.review-input.textarea{
+    width:700px;
+    height:200px;
+    vertical-align: top;
+    background-color: var(--lightgrey1);
+    overflow: auto;
+    resize:none;
+    border:none
+
+}
+
+.review-textarea:focus{
+    outline: none !important;
+    border: 2px solid var(--orange);
+}
+
+
+.default-btn.moviedetails-addreview-btn{
+    min-width: 90px;
+    border-radius: 4px;
+    padding: 5px 10px;
+    height:25px;
+    align-items: start;
+    margin-right: 10px;
+    background: linear-gradient(rgba(59,193,37,100) 0%, rgba(5,120,3,1) 100%);
+    color:#FFFFFFFF;
+}

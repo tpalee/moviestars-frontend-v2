@@ -1,0 +1,164 @@
+
+/*navcontent holds the navbeam(forms the navbar shape) and the navigation(buttons etc.)container*/
+.navcontainer {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+}
+
+/*navbarshape*/
+.navbeam::after {
+    content: "";
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 1024px;
+    height: 70px;
+    background-color: #000;
+}
+
+/*navbarshape*/
+.navbeam {
+    content: "";
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: relative;
+    width: 100vw;
+    height: 70px;
+    background-color: #000;
+    filter: drop-shadow(0px 4px 3px #29292b);
+}
+
+/*navbarshape*/
+.navbeam::before {
+    content: "";
+    position: absolute;
+    display: block;
+    border-radius: 12px;
+    width: 250px;
+    height: 90px;
+    background-color: #000;
+    filter: drop-shadow(0px 4px 3px #29292b);
+}
+
+
+/*logo in the nav*/
+.linklogonav {
+    margin-top: 6px;
+    position: absolute;
+    z-index: 2;
+}
+
+.logonav {
+    z-index: 1;
+}
+
+/*.navigation holds the input field and the buttons*/
+.navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 1024px;
+    height: 70px;
+    position: absolute
+}
+
+/*list of the buttons*/
+#navbuttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.navlink{
+    text-decoration: none;
+}
+
+
+/*styling the input buttons*/
+#searchmovieinput
+{
+    height: 25px;
+    border:none;
+    outline: none;
+    border-radius: 6px 0px 0px 6px;
+    padding-left:6px;
+}
+
+#searchcontainer{
+    display: flex;
+    flex-direction: row;
+}
+
+/*general styling buttons*/
+.navbutton{
+    min-width: 90px;
+    border-radius: 4px;
+    padding: 5px 10px;
+    height:25px;
+    background: linear-gradient(rgba(243,187,0,1) 0%, rgb(219, 120, 0) 100%);
+    align-items: start;
+    margin-right: 10px;
+}
+
+
+.navbutton:hover{
+   color: #f6eab1;
+}
+
+.navbutton.searchbutton{
+    border-radius: 0px 6px 6px 0px;
+}
+
+.addmoviebutton,.signupbutton{
+    background: linear-gradient(rgba(59,193,37,100) 0%, rgba(5,120,3,1) 100%);
+    color:#FFFFFFFF;
+}
+
+.addmoviebutton:hover,.signupbutton:hover{
+    color: #6eb824;
+}
+
+
+
+/*ICONS*/
+.icon{
+    position: relative;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    margin-right: 5px;
+    bottom: 3px;
+}
+
+.icon.logout, .icon.myprofile, .icon.signup{
+    font-size: 1.2rem;
+    bottom: 7px;
+}
+
+.icon.login{
+    font-size: 1.1rem;
+    bottom: 6px;
+}
+/*buttontext*/
+.buttontextspan{
+    font-size: 0.9rem;
+    position: relative;
+    bottom: 6px;
+}
+
+.buttontextspan.logouttext, .buttontextspan.myprofiletext, .buttontextspan.logintext,.buttontextspan.signuptext{
+    font-size: 0.9rem;
+    position: relative;
+    bottom: 12px;
+}
+
+.buttontextspan.logintext{
+    font-size: 0.9rem;
+    position: relative;
+    bottom: 9px;
+}

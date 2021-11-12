@@ -1,25 +1,56 @@
-import logo from './logo.svg';
+import {useState} from "react";
 import './App.css';
+import PrivateRoute from "./components/privateroute/PrivateRoute";
+import PrivateAdminRoute from "./components/privateroute/PrivateAdminRoute";
+import {
+    Switch,
+    Route,
+} from 'react-router-dom';
+import Nav from "./components/nav/Nav";
+
+import Movies from "./pages/movies/Movies";
+import Signin from "./pages/login/Signin";
+import Signup from "./pages/signup/Signup";
+import AddMovie from "./pages/addmovie/AddMovie";
+import UserProfile from "./pages/profile/UserProfile";
+import AdminProfile from "./pages/profile/AdminProfile";
+import MovieDetails from "./pages/movieDetails/MovieDetails";
+import AddReview from "./pages/addReview/AddReview";
+import UpdateReview from "./pages/updateReview/UpdateReview";
+import UserDetails from "./pages/userdetails/UserDetails";
+import UpdateUser from "./pages/updateUser/UpdateUser";
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [searchvalue, setSearchvalue] = useState(null);
+
+    return (
+        <div className="App">
+            <header>
+                <Nav searchvalue={searchvalue} setSearchvalue={setSearchvalue}/>
+            </header>
+            <main>
+                <Switch>
+                    <Route exact path="/movies"><Movies/></Route>
+                    <Route path="/movies/:movieId"><MovieDetails/></Route>
+                    <Route path="/signin"><Signin/></Route>
+                    <Route path="/signup"><Signup/></Route>
+                    <PrivateRoute path="/addmovie"><AddMovie/></PrivateRoute>
+                    <PrivateRoute path="/profile"><UserProfile/></PrivateRoute>
+                    <PrivateRoute path="/addreview"><AddReview/></PrivateRoute>
+                    <PrivateRoute path="/updatereview/:reviewId"><UpdateReview/></PrivateRoute>
+                    <PrivateRoute path="/user/profile"><UserProfile/></PrivateRoute>
+                    <PrivateRoute path="/user/profile/:userId"><UpdateUser/></PrivateRoute>
+                    <PrivateAdminRoute path="/admin/profile"><AdminProfile/></PrivateAdminRoute>
+                        <PrivateAdminRoute path="/admin/userdetails/:userId"><UserDetails/></PrivateAdminRoute>
+                </Switch>
+            </main>
+
+
+        </div>
+
+    );
 }
 
 export default App;

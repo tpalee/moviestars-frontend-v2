@@ -1,0 +1,42 @@
+.shadow-cont.profile-cont{
+    width: 800px;
+    display:flex;
+    flex-direction: column;
+}
+
+.shadow-cont.info-cont{
+    font-size: 1rem;
+    width: 200px;
+    height:150px;
+    padding:20px;
+    background-color: var(--lightgrey1);
+    display:flex;
+    flex-direction: column;
+}
+
+.shadow-cont.user-info{
+    font-size: 1rem;
+    width: 500px;
+    padding:20px;
+    background-color: var(--lightgrey1);
+    display:flex;
+    flex-direction: row;
+}
+
+.position-cont-row.pos-admin{
+    width:750px;
+    justify-content: space-between;
+}
+
+.userlist{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--lightgrey2);
+    padding:5px;
+}
+
+.ul-user{
+    display: flex;
+    flex-direction: row;
+}
