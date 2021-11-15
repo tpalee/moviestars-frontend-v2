@@ -10,7 +10,7 @@ function PrivateRoute({isAut, children, ...rest}){
     return(
         <Route {...rest}>
 
-            {isAuth && (isAdmin===false) ? children : history.push('/movies')}
+            {isAuth  ? children : history.push('/movies')}
         </Route>
     )
 }

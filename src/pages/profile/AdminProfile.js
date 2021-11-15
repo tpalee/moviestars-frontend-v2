@@ -19,7 +19,7 @@ function AdminProfile(props) {
         async function fetchUserData() {
 
             try {
-                const result = await axios('http://localhost:8080/users', {
+                const result = await axios.get('http://localhost:8080/users', {
                     headers: {
                         'Content-Type': "application/json",
                         Authorization: `Bearer ${token}`
@@ -63,7 +63,7 @@ function AdminProfile(props) {
                                             <p>user: {user.username}</p>
                                             <p>email:{user.email}</p>
                                             <Button handleClick={() => {
-                                                history.push(`/admin/userdetails/${user.username}`)
+                                                history.push(`/user/userdetails/${user.username}`)
                                             }}>details</Button>
                                             <Button>delete</Button>
                                         </div>

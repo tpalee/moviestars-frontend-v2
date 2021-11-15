@@ -85,13 +85,7 @@ function AddReview() {
                     </input>
                     {errors.rating && <p>{errors.rating.message}</p>}
                     <div className="btn-cont">
-                        {!loading && <Button
-                            className="back-btn"
-                            type="button"
-                            handleClick={() => {
-                                history.goBack()
-                            }}
-                        >Back</Button>}
+
                         <Button
                             className="green-btn"
                             type="submit">
@@ -99,6 +93,13 @@ function AddReview() {
                         </Button>
                     </div>
                 </form>
+                {!loading && <Button
+                    className="back-btn"
+                    type="button"
+                    handleClick={() => {
+                        history.goBack()
+                    }}
+                >Back</Button>}
             </ShadowContainer>
         </section>
     );

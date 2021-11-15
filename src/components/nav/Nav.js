@@ -11,8 +11,9 @@ import moviestarslogo from '../../assets/img/moviestarslogo.png';
 
 function Nav({setSearchvalue}) {
     const history=useHistory();
-    const {isAuth, logout,isAdmin} = useContext(AuthContext);
+    const {isAuth, user, logout,isAdmin} = useContext(AuthContext);
     const {register, handleSubmit} = useForm();
+
 
 
     function onFormSubmit(data){
@@ -82,7 +83,7 @@ console.log(isAdmin);
                         <button
                             name="myprofile"
                             className="navbutton myprofilebutton"
-                            onClick={()=>{isAuth && !isAdmin ? history.push('/user/profile'):history.push('/admin/profile')}}>
+                            onClick={()=>{isAuth && !isAdmin ? history.push(`/user/userdetails/${user.username}`):history.push('/admin/profile')}}>
                             <FaUserCheck className="icon myprofile"/>
                             <span className="buttontextspan myprofiletext">My Profile</span>
                         </button>

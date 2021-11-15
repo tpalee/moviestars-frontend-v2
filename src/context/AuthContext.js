@@ -18,6 +18,7 @@ function AuthContextProvider({children}) {
 
     // MOUNTING EFFECT
     useEffect(() => {
+
         // get JWT
         const token = localStorage.getItem('token');
 
@@ -32,6 +33,7 @@ function AuthContextProvider({children}) {
                 status: 'done',
             });
         }
+
     },[]);
 
     function login(JWT) {
@@ -109,7 +111,7 @@ console.log(admin);
 
     return (
         <AuthContext.Provider value={contextData}>
-            {isAuth.status === 'done' ? children : <p>Loading...</p>}
+            {isAuth.status === 'done' ? children : <span>Loading...</span>}
         </AuthContext.Provider>
     );
 }

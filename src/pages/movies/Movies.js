@@ -6,8 +6,10 @@ import Movie from "../../components/movie/Movie";
 
 function Movies(props) {
     const [movieData, setMovieData] = useState(null);
+    const [loading,setLoading]=useState(false);
 
     useEffect(() => {
+        setLoading(true);
         async function fetchMovies() {
             try {
                 const result = await axios.get('http://localhost:8080/movies',
@@ -17,16 +19,13 @@ function Movies(props) {
                         }
                     });
                 setMovieData(result.data)
-
-
-
-
             } catch (error) {
                 console.error();
             }
         }
-
+        setLoading(false)
         fetchMovies()
+
     }, [])
 
 
@@ -34,9 +33,9 @@ console.log(movieData)
 
     return (
         <>
+            {movieData &&
             <div className="position-cont-row">
-            {movieData && movieData.map((movie) => {
-
+            {movieData.map((movie) => {
                 return <Movie
                 key={movie.id}
                 movieId={movie.id}
@@ -45,7 +44,7 @@ console.log(movieData)
                 movieRating={movie.movieRating}
                 />
             })}
-            </div>
+            </div>}
         </>);
             }
 

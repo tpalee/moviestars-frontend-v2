@@ -1,14 +1,16 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import {useParams, useHistory} from "react-router-dom";
 import ShadowContainer from "../../components/shadowcontainer/ShadowContainer";
 import axios from "axios";
 import {AuthContext} from "../../context/AuthContext";
 import Movie from "../../components/movie/Movie";
+import Button from "../../components/buttons/Button";
 
 function UserDetails(props) {
-    const {isAdmin} = useContext(AuthContext);
+    const {isAdmin,user} = useContext(AuthContext);
     const {userId}=useParams();
     const token = localStorage.getItem('token');
+    const history=useHistory();
     const [loading,toggleLoading]=useState(false);
     const [error,toggleError]=useState(false);
     const [userInfo,setUserInfo]=useState({});
@@ -88,12 +90,19 @@ setUserInfo(result.data);
     },[userId])
 
     return (
+        <>
+            {userInfo.username===user.username &&
         <section className="position-cont-col">
             {loading && <span>loading</span>}
             {error && <span>something went wrong, data not loaded</span>}
             {isAdmin ? <h1>userdetails: {userId}</h1> : <h1>Welcome {userId}</h1>}
         <ShadowContainer>
+           <h2>personal info:</h2>
         <p>{userInfo.username}</p>
+            <p>{userInfo.email}</p>
+            {!isAdmin && <Button handleClick={()=>history.push(`/updateuser/${userInfo.username}`)}>update {userInfo.username}</Button>}
+
+
         </ShadowContainer>
             <ShadowContainer>
                 {movieData && movieData.map((movie,index) => {
@@ -113,8 +122,8 @@ setUserInfo(result.data);
                         </div>)
                             })}
             </ShadowContainer>
-
-        </section>
+        </section>}
+        </>
     );
 }
 
