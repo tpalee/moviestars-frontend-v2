@@ -12,11 +12,15 @@ body{
   background-color: var(--darkgrey1);
 }
 
+Nav{
+  z-index: 4;
+}
 
+/*GENERAL COLORS*/
 :root {
   --black:#000;
   --darkgrey1: #525151;
-  --darkgrey2: #413C3C;
+  --darkgrey2: #464343;
   --lightgrey1: #a1a1a1;
   --lightgrey2: #797979;
   --orange:#f3a008;
@@ -27,7 +31,6 @@ body{
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-
 }
 
 
@@ -35,6 +38,8 @@ main {
   margin-top: 120px;
 }
 
+
+/*STYLING CONTAINERS WITH FLEX ROW AND FLEX COLUMN*/
 .position-cont-row{
   width:1024px;
   margin: 0 auto;
@@ -57,27 +62,56 @@ main {
   justify-content: space-between;
 }
 
-.default-btn.back-btn{
-  min-width: 90px;
-  border-radius: 4px;
-  padding: 5px 10px;
-  height:25px;
+/*GENERAL SHADOWCONTAINER  STYLING*/
+.orange-cont{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0 0 0;
+  width:750px;
   background: linear-gradient(rgba(243,187,0,1) 0%, rgb(219, 120, 0) 100%);
-  align-items: start;
-  margin-right: 10px;
+  height:40px;
+}
+
+
+/*GENERAL BUTTON STYLING*/
+
+.default-btn.orange-btn:hover{
+  color: #f6eab1;
 }
 
 .default-btn.green-btn{
-  min-width: 90px;
-  border-radius: 4px;
-  padding: 5px 10px;
-  height:25px;
-  align-items: start;
-  margin-right: 10px;
   background: linear-gradient(rgba(59,193,37,100) 0%, rgba(5,120,3,1) 100%);
   color:#FFFFFFFF;
 }
 
+.default-btn.green-btn:hover{
+  color: #6eb824;
+}
+
+.default-btn.red-btn{
+  color:#FFF;
+  background: linear-gradient(rgba(246,5,5,100) 0%, rgba(134,8,8,100) 100%);
+}
+
+.default-btn.red-btn:hover{
+  color:#cbb8b8;
+}
+
+
+.btn-txt.back-txt{
+  position: relative;
+  bottom: 11px;
+  font-size: 0.9rem;
+}
+
+
+
+/*GENERAL ICONS*/
+.icon.back{
+  font-size: 1.5rem;
+  bottom: 5px;
+}
 
 
 

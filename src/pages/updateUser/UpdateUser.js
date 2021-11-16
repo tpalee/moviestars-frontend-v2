@@ -18,7 +18,7 @@ function UpdateUser({hallo}) {
             const token = localStorage.getItem('token');
             await axios.put(`http://localhost:8080/users/${userId}`, {
                 password: data.passwordupdate,
-                email: 'thieulee@hotmail.com',
+                email: data.emailupdate,
                 enabled: true,
             }, {
                 headers: {
@@ -42,7 +42,7 @@ function UpdateUser({hallo}) {
                 <form onSubmit={handleSubmit(onFormSubmit)}>
 
                     <label htmlFor="passwordupdate"/>
-                    Rating:
+                    New password:
                     <input
                         type="password"
                         className="password-input"
@@ -50,14 +50,32 @@ function UpdateUser({hallo}) {
                         placeholder="type in your new password"
                         {...register("passwordupdate", {
                             required: {
-                                minLength:8,
                                 value: true,
+                                minLength:8,
                                 message: 'Sorry, input required, create a password with a minimum of 8 characters',
                             },
                         })}
                     >
                     </input>
                     {errors.passwordupdate && <p>{errors.passwordupdate.message}</p>}
+                    <label htmlFor="updateemail"/>
+                    New password:
+                    <input
+                        type="text"
+                        className="email-input"
+                        id="updateemail"
+                        placeholder="type in your new password"
+                        {...register("emailupdate", {
+                            required: {
+                                minLength:8,
+                                value: true,
+                                //validate: (value) => value.includes('@'),
+                                message: 'Sorry, input required, email must be a valid emailadress',
+                            },
+                        })}
+                    >
+                    </input>
+                    {errors.emailupdate && <p>{errors.emailupdate.message}</p>}
 
 
 

@@ -3,13 +3,15 @@ import ShadowContainer from "../shadowcontainer/ShadowContainer";
 import Button from "../buttons/Button";
 import {AuthContext} from '../../context/AuthContext';
 import '../review/Review.css'
+import {MdSystemUpdateAlt, MdWarning} from 'react-icons/md';
 import {useHistory} from "react-router-dom";
 import axios from "axios";
 
 function Review({review, reviewRating, badLanguage, reviewer, reviewId}) {
     const {user} = useContext(AuthContext);
     const history = useHistory();
-    let color="grey";
+    let color = "grey";
+    const id = reviewId;
     const reviewInfo =
         {
             review,
@@ -18,7 +20,6 @@ function Review({review, reviewRating, badLanguage, reviewer, reviewId}) {
             reviewer,
             reviewId,
         };
-    const id=reviewId;
 
 
     async function badLanguageHandler() {
@@ -31,35 +32,45 @@ function Review({review, reviewRating, badLanguage, reviewer, reviewId}) {
                     }
                 }
             )
-
         } catch (e) {
             console.error(e);
         }
         history.push(`/movies`)
     }
-
-    if((badLanguage)){
-        color="red"
+    if ((badLanguage)) {
+        color = "red"
+    } else {
+        color = "grey"
     }
-    else{
-        color="grey"
-    }
-console.log(user.username,reviewer);
 
     return (
-        <ShadowContainer className={`review-cont-${color}`}>
-            <p>{review}</p>
-            <p>{reviewRating}</p>
-            <p>{reviewer}</p>
+        <ShadowContainer className={`review-cont ${color}`}>
+            <h3 className="review-title">review</h3>
+            <p className="review-txt">{review}</p>
+            <small className="review-small"> reviewed by: {reviewer}</small>
+
+<div className="review-bottom">
+    <p className="review-txt">rating: <span className="rating-txt">{reviewRating}</span></p>
+            <div className="btn-cont review">
             {user !== null && reviewer === user.username &&
+
             <Button
+                type="button"
                 className="green-btn"
-                handleClick={() => {
-                    history.push(`/updatereview/${reviewId}`, {reviewInfo})
-                }}>update Review</Button>}
+                handleClick={() => {history.push(`/updatereview/${reviewId}`, {reviewInfo})}}
+            >
+                <MdSystemUpdateAlt className="icon update"/>
+                <span className="btn-txt update-txt">Update Review</span>
+            </Button>}
+
             <Button
-                className="green-btn"
-                handleClick={badLanguageHandler}>report harmful content</Button>
+                className="red-btn"
+                handleClick={badLanguageHandler}>
+                <MdWarning className="icon warning"/>
+                <span className="btn-txt warning-txt">Report harmfull content</span>
+            </Button>
+</div>
+</div>
         </ShadowContainer>
     );
 }

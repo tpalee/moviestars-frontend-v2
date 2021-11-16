@@ -1,6 +1,5 @@
 .shadow-cont.moviedetails-cont{
     width:800px;
-    height:300px;
     background-color: #000;
 }
 
@@ -25,7 +24,7 @@
 
 .moviedetails-description{
     color:#FFF;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     margin: 0 0 35px 45px;
 }
 
@@ -51,28 +50,19 @@
 
 
 
-.default-btn.moviedetails-addreview-btn{
-    min-width: 90px;
-    border-radius: 4px;
-    padding: 5px 10px;
-    height:25px;
-    align-items: start;
-    margin-right: 10px;
-    background: linear-gradient(rgba(59,193,37,100) 0%, rgba(5,120,3,1) 100%);
-    color:#FFFFFFFF;
+
+
+
+
+
+/*BUTTONS STYLING*/
+
+.icon.update,.icon.warning{
+    font-size: 1.2rem;
+    bottom:2px
 }
 
-.default-btn.moviedetails-addreview-btn:hover{
-    color: #6eb824;
-}
-
-
-.shadow-cont.moviedetails-reviews-title-cont{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0 0 0;
-    width:750px;
-    background: linear-gradient(rgba(243,187,0,1) 0%, rgb(219, 120, 0) 100%);
-    height:40px;
+.btn-txt.update-txt,.btn-txt.warning-txt{
+    position: relative;
+    bottom: 6px;
 }

@@ -1,0 +1,13 @@
+
+
+
+
+/*BUTTON STYLING*/
+.icon.delete{
+    font-size: 1.1rem;
+}
+
+.btn-txt.delete-btn{
+    position: relative;
+    bottom: 6px;
+}

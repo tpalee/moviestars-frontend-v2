@@ -4,7 +4,9 @@ import './Button.css';
 function Button({children, className, handleClick}) {
 
     return (
-        <button className={`default-btn ${className}`} onClick={handleClick}>
+        <button
+            className={`default-btn ${className}`}
+            onClick={handleClick}>
             <span>
             {children}
             </span>

@@ -75,10 +75,6 @@
 }
 
 
-.navlink{
-    text-decoration: none;
-}
-
 
 /*styling the input buttons*/
 #searchmovieinput
@@ -95,16 +91,6 @@
     flex-direction: row;
 }
 
-/*general styling buttons*/
-.navbutton{
-    min-width: 90px;
-    border-radius: 4px;
-    padding: 5px 10px;
-    height:25px;
-    background: linear-gradient(rgba(243,187,0,1) 0%, rgb(219, 120, 0) 100%);
-    align-items: start;
-    margin-right: 10px;
-}
 
 
 .navbutton:hover{
@@ -115,13 +101,49 @@
     border-radius: 0px 6px 6px 0px;
 }
 
-.addmoviebutton,.signupbutton{
-    background: linear-gradient(rgba(59,193,37,100) 0%, rgba(5,120,3,1) 100%);
-    color:#FFFFFFFF;
+/*BUTTON STYLING*/
+.default-btn.orange-btn{
+    color:#000;
+    background: linear-gradient(rgba(243,187,0,1) 0%, rgb(219, 120, 0) 100%);
 }
 
-.addmoviebutton:hover,.signupbutton:hover{
-    color: #6eb824;
+
+
+
+.default-btn.orange-btn.search-btn{
+    border-radius: 0 5px 5px 0;
+}
+
+.btn-txt.delete{
+    position: relative;
+    bottom: 5px;
+}
+
+.btn-txt.add-txt{
+    position: relative;
+    font-size: 0.9rem;
+    bottom: 2px;
+}
+
+.btn-txt.logout-txt,.btn-txt.profile-txt,.signup-txt{
+    position: relative;
+    font-size: 0.9rem;
+    bottom: 6px;
+}
+
+.btn-txt.signin-txt{
+    position: relative;
+    bottom: 5px;
+}
+
+.signup-txt{
+    position: relative;
+    bottom: 7px;
+}
+
+.search-txt{
+    position: relative;
+    bottom: 3px;
 }
 
 
@@ -135,30 +157,22 @@
     bottom: 3px;
 }
 
-.icon.logout, .icon.myprofile, .icon.signup{
+.icon.logout, .icon.myprofile, .icon.signup, .icon.signin{
     font-size: 1.2rem;
-    bottom: 7px;
+
 }
 
-.icon.login{
+.icon.signin{
     font-size: 1.1rem;
-    bottom: 6px;
-}
-/*buttontext*/
-.buttontextspan{
-    font-size: 0.9rem;
-    position: relative;
-    bottom: 6px;
 }
 
-.buttontextspan.logouttext, .buttontextspan.myprofiletext, .buttontextspan.logintext,.buttontextspan.signuptext{
-    font-size: 0.9rem;
-    position: relative;
-    bottom: 12px;
+.icon.plus{
+    bottom: -1px;
 }
 
-.buttontextspan.logintext{
-    font-size: 0.9rem;
-    position: relative;
-    bottom: 9px;
-}
+
+
+
+
+
+

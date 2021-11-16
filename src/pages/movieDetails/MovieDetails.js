@@ -3,6 +3,9 @@ import {useParams, useHistory} from 'react-router-dom';
 import {AuthContext} from '../../context/AuthContext';
 import axios from "axios";
 import './MovieDetails.css'
+import {FaPlus} from 'react-icons/fa';
+import {MdSystemUpdateAlt} from 'react-icons/md';
+import {TiArrowBack} from 'react-icons/ti'
 import defaultImage from "../../assets/img/defaultmovie.jpg";
 import ShadowContainer from "../../components/shadowcontainer/ShadowContainer";
 import Review from "../../components/review/Review";
@@ -53,32 +56,38 @@ function MovieDetails() {
                         </p>
                         <div className="moviedetails-btn-cont">
                             <Button
-                                className="back-btn"
+                                className="orange-btn"
                                 type="button"
-                                handleClick={() => {
-                                    history.push('/movies')
-                                }}
-                            >Back</Button>
+                                handleClick={() => {history.push('/movies')}}
+                            >
+                                <TiArrowBack className="icon back"/>
+                                <span className="btn-txt back-txt">Back</span>
+                            </Button>
+
                             {user &&
                             <Button
                                 className="green-btn"
                                 handleClick={() => {
                                     history.push('/addreview', movieId)
                                 }}>
-                                Add Review</Button>}
+                                <FaPlus className="icon plus"/>
+                                <span className="btn-txt add-txt">Add Review</span>
+                            </Button>}
+
                             {user !== null && movie.moviePoster === user.username &&
                             <Button
                                 className="green-btn"
-                                handleClick={() => {
-                                    console.log("check")
-                                }}>update Movie</Button>}
+                                handleClick={() => history.push(`/updatemovie/${movieId}`)}>
+                                <MdSystemUpdateAlt className="icon update"/>
+                                <span className="btn-txt update-txt">Update Movie</span>
+                            </Button>}
                         </div>
                     </div>
 
                 </ShadowContainer>
 
                 <div>
-                    {movie.reviews && <ShadowContainer className="moviedetails-reviews-title-cont">
+                    {movie.reviews && <ShadowContainer className="orange-cont">
                         <h1 className="moviedetails-reviews-title">REVIEWS</h1>
                     </ShadowContainer>}
 

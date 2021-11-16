@@ -8,7 +8,8 @@ import {useHistory} from 'react-router-dom';
 function AdminProfile(props) {
     const history=useHistory();
     const {user} = useContext(AuthContext);
-    const [userData, setUserData] = useState([])
+    const [userData, setUserData] = useState([]);
+    const[badLanguageData,setBadLanguageData]=useState(null);
     const [loading, toggleLoading] = useState(false);
     const [error, toggleError] = useState(false);
 
@@ -17,7 +18,6 @@ function AdminProfile(props) {
         toggleLoading(true);
 
         async function fetchUserData() {
-
             try {
                 const result = await axios.get('http://localhost:8080/users', {
                     headers: {
@@ -31,7 +31,23 @@ function AdminProfile(props) {
                 toggleError(true);
             }
 
+            try {
+                const result = await axios.get('http://localhost:8080/reviews/badlanguage', {
+                    headers: {
+                        'Content-Type': "application/json",
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+                setBadLanguageData(result.data)
+            } catch (e) {
+                console.error("no Harmfull Content data fetched" + e)
+                toggleError(true);
+            }
+
         }
+
+
+
 
         fetchUserData()
         toggleLoading(false)
@@ -45,7 +61,6 @@ function AdminProfile(props) {
             {loading && <span>loading...</span>}
             {error && <span>something went wrong, no userdata fetched</span>}
             <ShadowContainer className="profile-cont">
-
                 <h2>Welcome {user.username}</h2>
                 <div className="position-cont-row pos-admin">
                     <ShadowContainer className="info-cont">
@@ -57,7 +72,6 @@ function AdminProfile(props) {
                         <ul className="ul-users">
                             {userData && userData.map((user) => {
                                 return (
-
                                     <li key={user.username}>
                                         <div className="userlist">
                                             <p>user: {user.username}</p>
@@ -72,10 +86,16 @@ function AdminProfile(props) {
 
                             })}
                         </ul>
-
                     </ShadowContainer>
                 </div>
             </ShadowContainer>
+            {badLanguageData && <ShadowContainer>
+                {badLanguageData.map((review)=>{
+                    return(
+                        <p>{review.review}</p>
+                    )
+                })}
+            </ShadowContainer>}
         </section>
     );
 }
