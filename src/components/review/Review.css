@@ -1,8 +1,9 @@
+
 .review-cont{
     flex-direction: column;
     background-color: #262424;
     width: 750px;
-    margin: 10px 0 0 0;
+    margin: 10px 0 10px 0;
 }
 
 .review-cont.red {

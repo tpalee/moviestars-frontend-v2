@@ -103,7 +103,7 @@ function UserDetails(props) {
                         return (
                             <>
                                 <Movie
-                                    key={index}
+                                    key={movie.id}
                                     movieId={movie.id}
                                     movieTitle={movie.movieTitle}
                                     movieImage={movie.image}

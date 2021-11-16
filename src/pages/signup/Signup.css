@@ -7,3 +7,7 @@
     background-color: #413C3C;
     border-radius: 10px;
 }
+
+.form-button:disabled{
+    background: #6eb824;
+}

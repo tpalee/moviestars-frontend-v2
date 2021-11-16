@@ -34,7 +34,6 @@ function SignUp() {
             toggleError(true);
         }
         toggleLoading(false);
-        history.push('/signin');
     }
 
     return (
@@ -80,7 +79,7 @@ function SignUp() {
                 <button
                     type="submit"
                     className="form-button"
-                    disabled={loading}
+
                 >
                     Registreren
                 </button>
