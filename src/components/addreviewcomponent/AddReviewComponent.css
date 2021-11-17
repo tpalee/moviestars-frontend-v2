@@ -1,0 +1,57 @@
+.shadow-cont.review-input-cont{
+    background-color: var(--lightgrey2);
+    width:750px;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.form-cont{
+    margin-top: 10px;
+    padding:0 25px;
+}
+
+.review-input{
+    display: block;
+}
+
+.review-input.textarea{
+    width:700px;
+    height:200px;
+    vertical-align: top;
+    background-color: var(--lightgrey1);
+    overflow: auto;
+    resize:none;
+    border:none
+}
+
+.review-textarea:focus{
+    outline: none !important;
+    border: 2px solid var(--orange);
+}
+
+.title-cont{
+    display: flex;
+    align-self: stretch;
+    justify-content: center;
+    padding:10px;
+    background: #000;
+    color:#FFF;
+    border-radius: 10px 10px 0 0;
+}
+
+.icon.addreview{
+    position: relative;
+    bottom: -1px;
+    color: var(--orange)
+}
+
+.btn-cont-addreview{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin:10px 0;
+}
+
+
+

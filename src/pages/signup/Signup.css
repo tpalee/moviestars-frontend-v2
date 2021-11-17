@@ -2,12 +2,9 @@
     margin:0 auto;
     display: flex;
     flex-direction: column;
-    width:350px;
+    width:450px;
     height: 300px;
-    background-color: #413C3C;
+    background-color: var(--lightgrey1);
     border-radius: 10px;
 }
 
-.form-button:disabled{
-    background: #6eb824;
-}

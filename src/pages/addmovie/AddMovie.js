@@ -5,13 +5,14 @@ import {useForm} from 'react-hook-form';
 import axios from "axios";
 import ShadowContainer from "../../components/shadowcontainer/ShadowContainer";
 import '../addmovie/AddMovie.css'
-import defaultImage from '../../assets/img/defaultmovie.jpg'
+import {TiArrowBack} from 'react-icons/ti'
+
+import Button from "../../components/buttons/Button";
 
 function AddMovie(props) {
     const {user} = useContext(AuthContext);
     const history = useHistory();
-
-    const {register, handleSubmit} = useForm();
+    const {register, handleSubmit, formState: {errors}} = useForm({mode: 'onBlur'});
     const [file, setFile] = useState(null);
 
     const fileMaker = (e) => {
@@ -27,7 +28,6 @@ function AddMovie(props) {
         const {movieTitle, movieGenre, movieDescription} = data;
         const formData = new FormData();
         formData.append('file', file)
-        //console.log(formData.values());
 
 
         try {
@@ -144,6 +144,15 @@ function AddMovie(props) {
                     </button>
 
                 </form>
+
+                <Button
+                    className="orange-btn"
+                    type="button"
+                    handleClick={() => {history.push('/movies')}}
+                >
+                    <TiArrowBack className="icon back"/>
+                    <span className="btn-txt back-txt">Back</span>
+                </Button>
             </ShadowContainer>
         </section>
     );

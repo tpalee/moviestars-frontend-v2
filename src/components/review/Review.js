@@ -35,7 +35,7 @@ function Review({review, reviewRating, badLanguage, reviewer, reviewId}) {
         } catch (e) {
             console.error(e);
         }
-        history.push(`/movies`)
+        history.go(0)
     }
     if ((badLanguage)) {
         color = "red"

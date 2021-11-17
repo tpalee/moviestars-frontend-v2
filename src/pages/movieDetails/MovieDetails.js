@@ -3,13 +3,14 @@ import {useParams, useHistory} from 'react-router-dom';
 import {AuthContext} from '../../context/AuthContext';
 import axios from "axios";
 import './MovieDetails.css'
-import {FaPlus} from 'react-icons/fa';
+
 import {MdSystemUpdateAlt} from 'react-icons/md';
 import {TiArrowBack} from 'react-icons/ti'
 import defaultImage from "../../assets/img/defaultmovie.jpg";
 import ShadowContainer from "../../components/shadowcontainer/ShadowContainer";
 import Review from "../../components/review/Review";
 import Button from "../../components/buttons/Button";
+import AddReviewButton from "../../components/buttons/AddReviewButton";
 
 
 function MovieDetails() {
@@ -32,7 +33,7 @@ function MovieDetails() {
             }
         }
         fetchMovieData()
-    }, [movieId])
+    }, [])
 
 
 
@@ -65,14 +66,10 @@ function MovieDetails() {
                             </Button>
 
                             {user &&
-                            <Button
-                                className="green-btn"
+                            <AddReviewButton
                                 handleClick={() => {
-                                    history.push('/addreview', movieId)
-                                }}>
-                                <FaPlus className="icon plus"/>
-                                <span className="btn-txt add-txt">Add Review</span>
-                            </Button>}
+                                    history.push('/addreview', movieId)}}
+                            />}
 
                             {user !== null && movie.moviePoster === user.username &&
                             <Button
@@ -93,6 +90,7 @@ function MovieDetails() {
 
                     {movie.reviews && movie.reviews.map((review) => {
                         return (
+
                             <Review
                                 key={review.id}
                                 reviewId={review.id}

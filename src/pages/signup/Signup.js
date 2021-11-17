@@ -1,37 +1,36 @@
-import React, { useState} from 'react';
+import React, {useState} from 'react';
 import ShadowContainer from "../../components/shadowcontainer/ShadowContainer";
-import { Link, useHistory } from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
+import {useForm} from 'react-hook-form';
 import axios from 'axios';
 import './Signup.css';
+import {TiArrowBack} from 'react-icons/ti'
+import Button from "../../components/buttons/Button";
 
 function SignUp() {
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
+    const {register, handleSubmit, formState: {errors}} = useForm({mode: 'onChange'})
+
     const source = axios.CancelToken.source();
 
 
-    const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
     const history = useHistory();
 
-    async function handleSubmit(e) {
-        e.preventDefault();
-        toggleError(false);
+    async function onFormSubmit(data) {
+        console.log(data);
         toggleLoading(true);
         try {
             await axios.post('http://localhost:8080/users/signup', {
-                username: username,
-                password: password,
-                email:email,
+                username: data.username,
+                password: data.password,
+                email: data.email,
             }, {
                 cancelToken: source.token,
             });
 
-        } catch(e) {
+        } catch (e) {
             console.error(e);
-            toggleError(true);
         }
         toggleLoading(false);
     }
@@ -40,54 +39,75 @@ function SignUp() {
 
 
         <section className="position-cont-col">
-                <ShadowContainer className="signup-cont">
+            <ShadowContainer className="signup-cont">
 
-<form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit(onFormSubmit)}>
 
-                <label htmlFor="username-field">
-                    Gebruikersnaam:</label>
+                    <label htmlFor="username"/>
+                    Username:
                     <input
+                        name="username"
                         type="text"
                         id="username-field"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        {...register("username", {
+                            required: {
+                                value: true,
+                                message: 'Input required',
+                            }
+                        })}
                     />
+                    {errors.username && <span>{errors.username.message}</span>}
 
-
-                <label htmlFor="password-field">
-                    Wachtwoord:
+                    <label htmlFor="signup-password"/>
+                    Password:
                     <input
                         type="password"
-                        id="password-field"
+                        id="signup-password"
                         name="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        {...register("password", {
+                            required: {
+                                value: true,
+                                message: 'Input required',
+                            },
+                            minLength:{value:8,
+                            message:'minimum length 8 characters is required'}
+                        })}
                     />
-                </label>
-    <label htmlFor="email-field">
-        Gebruikersnaam:</label>
-    <input
-        type="text"
-        id="email-field"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-    />
+                    {errors.password && <span>{errors.password.message}</span>}
 
+                    <label htmlFor="signup-email"/>
+                    Email:
+                    <input
+                        type="text"
+                        id="signup-email"
+                        name="email"
+                        {...register("email", {
+                            required: {
+                                value: true,
+                                message: 'Input required or email not valid',
+                            },validate: value => value.includes('@'), message: "error message"
+                        })}
+                    />
+                    {errors.email && <span>{errors.email.message}</span>}
 
+                    <Button
+                        type="submit"
+                        className="green-btn"
+                    >
+                        Sign up
+                    </Button>
 
-                {error && <p className="error">Dit account bestaat al. Probeer een andere username.</p>}
-                <button
-                    type="submit"
-                    className="form-button"
-
+                </form>
+                <Button
+                    className="orange-btn"
+                    type="button"
+                    handleClick={() => {history.push('/movies')}}
                 >
-                    Registreren
-                </button>
-
-            </form>
-
-            <p>Heb je al een account? Je kunt je <Link to="/signin">hier</Link> inloggen.</p>
-                </ShadowContainer>
+                    <TiArrowBack className="icon back"/>
+                    <span className="btn-txt back-txt">Back</span>
+                </Button>
+                <p>Heb je al een account? Je kunt je <Link to="/signin">hier</Link> inloggen.</p>
+            </ShadowContainer>
         </section>
     );
 }

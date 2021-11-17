@@ -1,6 +1,7 @@
 .shadow-cont.moviedetails-cont{
     width:800px;
     background-color: #000;
+    padding:25px;
 }
 
 .moviedetails-image{

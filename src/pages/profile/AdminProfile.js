@@ -55,7 +55,6 @@ function AdminProfile(props) {
     }, [dataChange===true])
 
 
-
     async function deleteitem(item){
         const token = localStorage.getItem('token');
         let url="";

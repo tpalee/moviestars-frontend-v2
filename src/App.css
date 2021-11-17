@@ -99,7 +99,6 @@ main {
   color:#cbb8b8;
 }
 
-
 .btn-txt.back-txt{
   position: relative;
   bottom: 11px;
@@ -114,8 +113,16 @@ main {
   bottom: 5px;
 }
 
-
-
-
-
-
+/*STYLING ERRORS*/
+.errormessage{
+  margin: 10px 0;
+  width:300px;
+  justify-content: center;
+  display: flex;
+  background-color: #fd0202;
+  color:#FFF;
+  font-size: 0.6rem;
+  text-align: center;
+  padding: 3px;
+  border-radius: 15px;
+}
