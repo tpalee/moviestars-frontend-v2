@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useForm} from 'react-hook-form';
 import {useHistory} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext";
@@ -6,7 +6,7 @@ import axios from 'axios';
 import ShadowContainer from "../../components/shadowcontainer/ShadowContainer";
 import BackButton from "../../components/buttons/BackButton";
 import AddReviewButton from "../../components/buttons/AddReviewButton";
-import '../addreviewcomponent/AddReviewComponent.css'
+import './/AddReviewComponent.css'
 import {FaPlus} from 'react-icons/fa';
 
 
@@ -14,8 +14,27 @@ function AddReviewComponent({name, state, reviewId}) {
     const {register, handleSubmit, formState: {errors}} = useForm({mode: 'onBlur'});
     const {user} = useContext(AuthContext);
     const history = useHistory();
+    const [reviewData,setReviewData]=useState("");
     const [loading, setLoading] = useState(false);
 
+
+    useEffect(()=>{
+        setLoading(true);
+        if(name!=="add"){
+            async function fetchReviewData(){
+                try{
+                    const result = await axios.get(`http://localhost:8080/reviews/${reviewId}`)
+                    console.log(result.data.review);
+                    setReviewData(result.data.review);
+                }
+                catch(e){
+                    console.error("reviewdata not fetched", e)
+                }
+            }
+            fetchReviewData();
+        }
+        setLoading(false);
+    },[])
 
     async function onFormSubmit(data) {
         if (name === 'add') {
@@ -58,9 +77,9 @@ function AddReviewComponent({name, state, reviewId}) {
         history.goBack();
     }
 
-
     return (
         <section className="position-cont-col">
+            {loading && <span>loading...</span>}
             <ShadowContainer className="review-input-cont">
                 <div className="title-cont">
                     <FaPlus className="icon addreview"/>
@@ -77,6 +96,7 @@ function AddReviewComponent({name, state, reviewId}) {
                             className="review-input textarea"
                             type="text"
                             id="review"
+                            defaultValue={reviewData}
                             {...register("review", {
                                 required: {
                                     maxlength: 400,

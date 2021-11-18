@@ -1,6 +1,6 @@
 import React from 'react';
 import {useLocation, useHistory, useParams} from "react-router-dom";
-import AddReviewComponent from "../../components/addreviewcomponent/AddReviewComponent";
+import AddReviewComponent from "../../components/add-update-review/AddReviewComponent";
 
 function UpdateReview() {
     const {reviewId} = useParams();

@@ -1,35 +1,61 @@
-import React, {useState, useContext} from 'react';
-import {useHistory} from 'react-router-dom';
-import {useForm} from 'react-hook-form';
-import {AuthContext} from '../../context/AuthContext';
+import React, {useState, useContext, useEffect} from 'react';
+import {AuthContext} from "../../context/AuthContext";
+import {useHistory, useParams} from "react-router-dom";
+import {useForm} from "react-hook-form";
 import axios from "axios";
-import ShadowContainer from "../../components/shadowcontainer/ShadowContainer";
-import AddReviewButton from "../../components/buttons/AddReviewButton";
-import Button from "../../components/buttons/Button";
-import '../addmovie/AddMovie.css'
-import AddUpdateMovie from "../../components/add-update-movie/AddUpdateMovie";
+import ShadowContainer from "../shadowcontainer/ShadowContainer";
+import AddReviewButton from "../buttons/AddReviewButton";
+import Button from "../buttons/Button";
 import {TiArrowBack} from 'react-icons/ti';
 
 
-function AddMovie(props) {
-/*    const {user} = useContext(AuthContext);
+function AddUpdateMovie({name}) {
+    const {user} = useContext(AuthContext);
+    const {updateMovieId} = useParams();
     const history = useHistory();
     const {register, handleSubmit, formState: {errors}} = useForm({mode: 'onBlur'});
     const [file, setFile] = useState(null);
+    const[movieId,setMovieId]=useState(null);
+    const [movieData, setMovieData] = useState(null);
+    const [loading, toggleLoading]=useState(false);
 
     const fileMaker = (e) => {
-        console.log(e.target.files[0]);
         setFile(e.target.files[0]);
     }
 
+useEffect(()=>{
+    toggleLoading(true);
+if(name!=="add"){
+setMovieId(updateMovieId);
+    async function fetchMovie() {
+        try {
+            const result = await axios.get(`http://localhost:8080/movies/${updateMovieId}`,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                });
+            setMovieData(result.data)
+            console.log(result.data);
+        } catch (e) {
+            console.error("moviedata can't be fetched", e);
+        }
+    }
+    fetchMovie();
+    toggleLoading(false);
+}
+},[])
+
+
+
     async function onFormSubmit(data) {
-        const token = localStorage.getItem('token');
-        let movieId;
-        let imageId;
         const {movieTitle, movieGenre, movieDescription} = data;
         const formData = new FormData();
         formData.append('file', file);
-
+        const token = localStorage.getItem('token');
+        let imageId;
+        let movieId;
+        if(name==='add'){
         try {
             const result = await axios.post('http://localhost:8080/movies', {
                     movieTitle: movieTitle,
@@ -51,7 +77,26 @@ function AddMovie(props) {
             movieId = locationHeader.substring(id + 1);
         } catch (e) {
             console.error(e)
-        }
+        }}
+        else{
+            try {
+                movieId=updateMovieId;
+                const result = await axios.put(`http://localhost:8080/movies/${updateMovieId}`, {
+                        movieTitle: movieTitle,
+                        movieGenre: movieGenre,
+                        movieDescription: movieDescription,
+                    }, {
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`
+                        }
+                    }
+                )
+            } catch (e) {
+                console.error(e)
+            }
+
+            }
         if (file !== null) {
             try {
                 const result = await axios.post('http://localhost:8080/images', formData
@@ -81,20 +126,16 @@ function AddMovie(props) {
                         }
                     }
                 )
-
-
             } catch (e) {
                 console.error('uploading failed' + e)
             }
         }
         history.push('/movies');
-    }*/
+    }
 
 
     return (
-        <AddUpdateMovie
-        name="add"/>
-      /*  <section className="position-cont-col">
+        <section className="position-cont-col">
 
             <ShadowContainer className="addmovie-cont">
                 <div className="title-cont">
@@ -177,8 +218,8 @@ function AddMovie(props) {
 
                 </div>
             </ShadowContainer>
-        </section>*/
+        </section>
     );
 }
 
-export default AddMovie;
+export default AddUpdateMovie;

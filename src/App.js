@@ -43,7 +43,7 @@ function App() {
                     <PrivateRoute path="/updatereview/:reviewId"><UpdateReview/></PrivateRoute>
                     <PrivateRoute path="/user/profile"><UserProfile/></PrivateRoute>
                     <PrivateRoute path="/updateuser/:userId"><UpdateUser/></PrivateRoute>
-                    <PrivateRoute path="/updatemovie/:movieId"><UpdateMovie/></PrivateRoute>
+                    <PrivateRoute path="/updatemovie/:updateMovieId"><UpdateMovie/></PrivateRoute>
                     <PrivateAdminRoute path="/admin/profile"><AdminProfile/></PrivateAdminRoute>
                         <PrivateRoute path="/user/userdetails/:userId"><UserDetails/></PrivateRoute>
                 </Switch>

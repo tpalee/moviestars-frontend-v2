@@ -6,11 +6,12 @@ import axios from "axios";
 import ShadowContainer from "../../components/shadowcontainer/ShadowContainer";
 import '../addmovie/AddMovie.css'
 import defaultImage from '../../assets/img/defaultmovie.jpg'
+import AddUpdateMovie from "../../components/add-update-movie/AddUpdateMovie";
 
 function UpdateMovie(props) {
-    const {user} = useContext(AuthContext);
+/*    const {user} = useContext(AuthContext);
     const history = useHistory();
-    const {movieId} = useParams();
+    const {updateMovieId} = useParams();
     const {register, handleSubmit} = useForm();
     const [file, setFile] = useState(null);
     const [movieData, setMovieData] = useState();
@@ -18,7 +19,7 @@ function UpdateMovie(props) {
     useEffect(() => {
         async function fetchMovie() {
             try {
-                const result = await axios.get(`http://localhost:8080/movies/${movieId}`,
+                const result = await axios.get(`http://localhost:8080/movies/${updateMovieId}`,
                     {
                         headers: {
                             "Content-Type": "application/json",
@@ -49,7 +50,7 @@ function UpdateMovie(props) {
         console.log(data);
 
         try {
-            const result = await axios.put(`http://localhost:8080/movies/${movieId}`, {
+            const result = await axios.put(`http://localhost:8080/movies/${updateMovieId}`, {
                     movieTitle: movieTitle,
                     movieGenre: movieGenre,
                     movieDescription: movieDescription,
@@ -86,7 +87,7 @@ function UpdateMovie(props) {
         }
 
         try {
-            await axios.patch(`http://localhost:8080/movies/${movieId}/images/${imageId}`, {
+            await axios.patch(`http://localhost:8080/movies/${updateMovieId}/images/${imageId}`, {
                     image: {id: `${imageId}`}
                 }
                 , {
@@ -104,11 +105,12 @@ function UpdateMovie(props) {
 
 
     // history.push('/movies');
-}
+}*/
 
 
 return (
-    <section className="position-cont-col">
+    <AddUpdateMovie/>
+/*    <section className="position-cont-col">
         <ShadowContainer className="addmovie-cont">
             <form onSubmit={handleSubmit(onFormSubmit)}>
                 <label htmlFor="movietitle-field">
@@ -155,7 +157,7 @@ return (
 
             </form>
         </ShadowContainer>
-    </section>
+    </section>*/
 );
 }
 

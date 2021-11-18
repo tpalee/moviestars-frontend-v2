@@ -67,6 +67,7 @@ function MovieDetails() {
 
                             {user &&
                             <AddReviewButton
+                                name="Add Review"
                                 handleClick={() => {
                                     history.push('/addreview', movieId)}}
                             />}
