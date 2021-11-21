@@ -7,7 +7,7 @@ function BackButton() {
     const history=useHistory();
     return (
         <Button
-            className="orange-btn"
+            className="orange-btn back-btn"
             type="button"
             handleClick={() => {history.push('/movies')}}
         >

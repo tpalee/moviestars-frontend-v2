@@ -51,13 +51,15 @@ function AddReviewComponent({name, state, reviewId}) {
                 }, {
                     headers: {
                         'Content-Type': "application/json",
-                        Authorization: `Bearer ${token}`
+                        Authorization: `Bearer ${token}`,
                     }
                 })
             } catch (e) {
-                console.error("error, review not posted:" + e)
+                console.error("error, review not posted:" + e);
             }
-        } else {
+        } else
+
+        {
             try {
                 const token = localStorage.getItem('token');
                 axios.put(`http://localhost:8080/reviews/${reviewId}`, {
@@ -66,11 +68,11 @@ function AddReviewComponent({name, state, reviewId}) {
                 }, {
                     headers: {
                         'Content-Type': "application/json",
-                        Authorization: `Bearer ${token}`
+                        Authorization: `Bearer ${token}`,
                     }
                 })
             } catch (e) {
-                console.error("error, review not updated" + e)
+                console.error("error, review not updated" + e);
             }
         }
         setLoading(false);
@@ -80,7 +82,7 @@ function AddReviewComponent({name, state, reviewId}) {
     return (
         <section className="position-cont-col">
             {loading && <span>loading...</span>}
-            <ShadowContainer className="review-input-cont">
+            {!loading && <ShadowContainer className="review-input-cont">
                 <div className="title-cont">
                     <FaPlus className="icon addreview"/>
                     {name === "add" ?
@@ -128,7 +130,7 @@ function AddReviewComponent({name, state, reviewId}) {
                                                 message: 'Sorry, input required, pick a number between 1 and 10',
                                             }, validate: {
                                                 positive: v => parseInt(v) > 0,
-                                                lessThanTen: v => parseInt(v) < 10,
+                                                lessThanTen: v => parseInt(v) <= 10,
                                             }
                                         }
                                     )}
@@ -152,10 +154,11 @@ function AddReviewComponent({name, state, reviewId}) {
                         </div>
                     </form>
 
-                    {!loading &&
-                    <BackButton className="back-btn-review"/>}
+                    <BackButton
+                        className="back-btn-review"
+                    />
                 </div>
-            </ShadowContainer>
+            </ShadowContainer>}
         </section>
     )
 }

@@ -1,4 +1,4 @@
-
+/*CONTAINER STYLING*/
 .review-cont{
     flex-direction: column;
     background-color: #262424;
@@ -41,6 +41,19 @@
 .review-small {
     margin-top: 8px;
     color: var(--lightgrey2);
+}
+
+
+/*STYLING BUTTONCONTENT*/
+
+.icon.update,.icon.warning{
+    font-size: 1.2rem;
+    bottom:2px
+}
+
+.btn-txt.update-txt,.btn-txt.warning-txt{
+    position: relative;
+    bottom: 6px;
 }
 
 

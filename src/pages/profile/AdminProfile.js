@@ -8,9 +8,9 @@ import {useHistory} from 'react-router-dom';
 import Review from "../../components/review/Review";
 import {MdDelete} from 'react-icons/md'
 
-function AdminProfile(props) {
+function AdminProfile() {
     const history=useHistory();
-    const {user, isAdmin} = useContext(AuthContext);
+    const {user} = useContext(AuthContext);
     const [userData, setUserData] = useState([]);
     const[badLanguageData,setBadLanguageData]=useState(null);
     const [loading, toggleLoading] = useState(false);
@@ -52,7 +52,7 @@ function AdminProfile(props) {
         }
         fetchUserData()
         toggleLoading(false)
-    }, [dataChange===true])
+    }, [dataChange])
 
 
     async function deleteitem(item){
@@ -69,7 +69,7 @@ function AdminProfile(props) {
             })
         }
         catch(e){
-            console.error("sorry, can't delete review", e)
+            console.error("sorry, can't delete", e)
         }
         setDataChange(true);
     }
@@ -99,7 +99,7 @@ function AdminProfile(props) {
                                             <p className="user-email">email:{appuser.email}</p>
                                             <Button
                                             className="green-btn"
-                                                handleClick={() => {history.push(`/user/userdetails/${user.username}`)}}
+                                                handleClick={() => {history.push(`/user/userdetails/${appuser.username}`)}}
                                             >
                                                 details
                                             </Button>

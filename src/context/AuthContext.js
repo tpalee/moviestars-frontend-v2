@@ -67,7 +67,7 @@ function AuthContextProvider({children}) {
 console.log(result.data);
             const username=result.data.username;
 
-                if(username=='admin'){
+                if(username==='admin'){
                     admin=true;
                 }
                 else{

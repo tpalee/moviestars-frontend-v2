@@ -1,5 +1,5 @@
 import React from 'react';
-import {useLocation, useHistory, useParams} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 import AddReviewComponent from "../../components/add-update-review/AddReviewComponent";
 
 function UpdateReview() {

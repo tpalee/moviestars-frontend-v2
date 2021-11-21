@@ -29,11 +29,10 @@ function Movies(props) {
     }, [])
 
 
-console.log(movieData)
-
     return (
         <>
-            {movieData &&
+            {loading && <span className="loading">loading...</span> }
+            {!loading && movieData &&
             <div className="position-cont-row">
             {movieData.map((movie) => {
                 return <Movie

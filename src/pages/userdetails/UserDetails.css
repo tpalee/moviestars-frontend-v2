@@ -1,13 +1,36 @@
+/*CONTAINER STYLING*/
+.shadow-cont.userdetails-cont{
+    display: flex;
+    flex-direction: column;
+padding:25px;
+    text-align: center;
+    background: var(--lightgrey1);
+    width:400px;
+    margin-top: 15px;
+}
 
+.userdetails-movies-cont{
+    display: flex;
+    flex-direction: row;
+}
 
+.userdetails-movie-cont{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userdetails-btn-cont{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/*TEXT STYLING*/
+.userdetails-userinfo-txt{
+    font-weight: bold;
+}
 
 
 /*BUTTON STYLING*/
-.icon.delete{
-    font-size: 1.1rem;
-}
-
-.btn-txt.delete-btn{
-    position: relative;
-    bottom: 6px;
-}

@@ -4,7 +4,7 @@ import {AuthContext} from "../../context/AuthContext";
 
 
 function PrivateRoute({isAut, children, ...rest}){
-    const {isAuth,isAdmin} = useContext(AuthContext);
+    const {isAuth} = useContext(AuthContext);
     const history=useHistory();
 
     return(

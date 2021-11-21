@@ -30,15 +30,7 @@
     border: 2px solid var(--orange);
 }
 
-.title-cont{
-    display: flex;
-    align-self: stretch;
-    justify-content: center;
-    padding:10px;
-    background: #000;
-    color:#FFF;
-    border-radius: 10px 10px 0 0;
-}
+
 
 .icon.addreview{
     position: relative;

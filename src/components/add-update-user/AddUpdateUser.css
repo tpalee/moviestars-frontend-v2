@@ -1,0 +1,41 @@
+.shadow-cont.auuser-cont{
+    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+    width:500px;
+    background-color: var(--lightgrey2);
+    border-radius: 10px;
+    align-items: flex-start;
+}
+
+.auuser-form{
+    display: flex;
+    flex-direction: column;
+    padding: 0 25px;
+    margin-top: 10px;
+}
+
+.auuser-input{
+    width:450px;
+    height:25px;
+    vertical-align: top;
+    background-color: var(--lightgrey1);
+    overflow: auto;
+    resize:none;
+    border:none;
+    margin-bottom: 15px;
+}
+
+.auuser-login-cont{
+    width:450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0 10px 0;
+}
+
+
+.auuser-btn-cont{
+    margin: 10px 0 0 25px;
+}
+
