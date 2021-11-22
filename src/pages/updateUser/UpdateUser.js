@@ -5,7 +5,8 @@ function UpdateUser() {
 
     return (
         <AddUpdateUser
-        name="updateuser"/>
+        name="updateuser"
+        />
     );
 }
 

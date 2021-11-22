@@ -53,6 +53,7 @@ starRate(movieRating)
         <>
             {loading && <span>loading...</span>}
             {error && <span>something went wrong, data not loaded</span>}
+            {!loading &&
             <Link className="movielink" key={movieId} to={{pathname:`/movies/${movieId}`,state:{urlContent}}}>
                 <ShadowContainer className="movie-cont">
                     {movieImage == null ?
@@ -70,7 +71,7 @@ starRate(movieRating)
                     </div>
 
                 </ShadowContainer>
-            </Link>
+            </Link>}
         </>
     );
 }

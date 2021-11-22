@@ -1,3 +1,5 @@
+/*STYLING CONTAINERS*/
+
 .shadow-cont.review-input-cont{
     background-color: var(--lightgrey2);
     width:750px;
@@ -10,6 +12,17 @@
     margin-top: 10px;
     padding:0 25px;
 }
+
+.btn-cont-addreview{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin:10px 0;
+}
+
+
+
+/*FORM STYLING*/
 
 .review-input{
     display: block;
@@ -32,18 +45,9 @@
 
 
 
-.icon.addreview{
-    position: relative;
-    bottom: -1px;
-    color: var(--orange)
-}
 
-.btn-cont-addreview{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin:10px 0;
-}
+
+
 
 
 

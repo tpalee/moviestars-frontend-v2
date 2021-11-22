@@ -6,11 +6,11 @@ import axios from "axios";
 export const AuthContext = createContext({});
 
 function AuthContextProvider({children}) {
-    let admin=false;
+    let admin = false;
     const [isAuth, toggleIsAuth] = useState({
         isAuth: false,
         user: null,
-        isAdmin:false,
+        isAdmin: false,
         status: 'pending',
     });
 
@@ -34,7 +34,8 @@ function AuthContextProvider({children}) {
             });
         }
 
-    },[]);
+    }, []);
+
 
     function login(JWT) {
         localStorage.setItem('token', JWT);
@@ -42,19 +43,18 @@ function AuthContextProvider({children}) {
         fetchUserData(decoded.sub, JWT, '/movies');
     }
 
+
     function logout() {
         localStorage.clear();
         toggleIsAuth({
             isAuth: false,
-            isAdmin:false,
+            isAdmin: false,
             user: null,
             status: 'done',
         });
-
         console.log('user logged out!');
         history.push('/movies');
     }
-
 
     async function fetchUserData(id, token, redirectUrl) {
         try {
@@ -64,20 +64,18 @@ function AuthContextProvider({children}) {
                     Authorization: `Bearer ${token}`,
                 },
             });
-console.log(result.data);
-            const username=result.data.username;
+            const username = result.data.username;
 
-                if(username==='admin'){
-                    admin=true;
-                }
-                else{
-                    admin=false;
-                }
+            if (username === 'admin') {
+                admin = true;
+            } else {
+                admin = false;
+            }
 
             toggleIsAuth({
                 ...isAuth,
                 isAuth: true,
-                isAdmin:admin,
+                isAdmin: admin,
                 user: {
                     username: result.data.username,
                     email: result.data.email,
@@ -85,7 +83,6 @@ console.log(result.data);
                 status: 'done',
             });
 
-console.log(admin);
             if (redirectUrl) {
                 history.push(redirectUrl);
             }
@@ -95,7 +92,7 @@ console.log(admin);
             toggleIsAuth({
                 isAuth: false,
                 user: null,
-                isAdmin:false,
+                isAdmin: false,
                 status: 'done',
             });
         }
@@ -104,7 +101,7 @@ console.log(admin);
     const contextData = {
         isAuth: isAuth.isAuth,
         user: isAuth.user,
-        isAdmin:isAuth.isAdmin,
+        isAdmin: isAuth.isAdmin,
         login: login,
         logout: logout,
     };

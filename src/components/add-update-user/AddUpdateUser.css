@@ -1,3 +1,5 @@
+/*CONTAINER STYLING*/
+
 .shadow-cont.auuser-cont{
     margin:0 auto;
     display: flex;
@@ -7,6 +9,21 @@
     border-radius: 10px;
     align-items: flex-start;
 }
+
+.auuser-login-cont{
+    width:450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0 10px 0;
+}
+
+.auuser-btn-cont{
+    margin: 10px 0 0 25px;
+}
+
+
+/*FORM STYLING*/
 
 .auuser-form{
     display: flex;
@@ -26,16 +43,8 @@
     margin-bottom: 15px;
 }
 
-.auuser-login-cont{
-    width:450px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5px 0 10px 0;
-}
 
 
-.auuser-btn-cont{
-    margin: 10px 0 0 25px;
-}
+
+
 

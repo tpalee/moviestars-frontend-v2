@@ -8,8 +8,15 @@ function DeleteButton({name,handleClick}) {
             className="red-btn delete-btn"
             handleClick={handleClick}
         >
-            <MdDelete className="icon delete"/>
-            <span className="delete-btn-txt">{name}</span>
+
+            <MdDelete
+                className="icon delete"
+            />
+
+            <span
+                className="delete-btn">{name}
+            </span>
+
         </Button>
     );
 }

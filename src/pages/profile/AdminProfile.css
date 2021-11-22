@@ -1,3 +1,4 @@
+/*CONTAINER STYLING*/
 .shadow-cont.profile-cont{
     display:flex;
     flex-direction: column;
@@ -25,6 +26,8 @@
     flex-direction: row;
 }
 
+
+/*USER LIST STYLING*/
 .userlist{
     width:970px;
     display: flex;

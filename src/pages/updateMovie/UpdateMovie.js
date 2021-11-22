@@ -4,7 +4,9 @@ import AddUpdateMovie from "../../components/add-update-movie/AddUpdateMovie";
 function UpdateMovie() {
 
 return (
-    <AddUpdateMovie/>
+    <AddUpdateMovie
+    name="update"
+    />
 );
 }
 

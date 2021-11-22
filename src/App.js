@@ -1,4 +1,3 @@
-import {useState} from "react";
 import './App.css';
 import PrivateRoute from "./components/privateroute/PrivateRoute";
 import PrivateAdminRoute from "./components/privateroute/PrivateAdminRoute";
@@ -7,6 +6,7 @@ import {
     Route,
 } from 'react-router-dom';
 import Nav from "./components/nav/Nav";
+import Welcome from "./pages/welcome/Welcome";
 import Movies from "./pages/movies/Movies";
 import Signin from "./pages/login/Signin";
 import Signup from "./pages/signup/Signup";
@@ -18,20 +18,22 @@ import UpdateReview from "./pages/updateReview/UpdateReview";
 import UserDetails from "./pages/userdetails/UserDetails";
 import UpdateUser from "./pages/updateUser/UpdateUser";
 import UpdateMovie from "./pages/updateMovie/UpdateMovie";
-
+import MovieSearch from "./pages/moviesearch/MovieSearch";
+import Footer from "./components/footer/Footer";
 
 
 function App() {
-    const [searchvalue, setSearchvalue] = useState(null);
 
     return (
-        <div className="App">
+        <div className="app">
             <header>
-                <Nav searchvalue={searchvalue} setSearchvalue={setSearchvalue}/>
+                <Nav/>
             </header>
             <main>
                 <Switch>
+                    <Route exact path="/"><Welcome/></Route>
                     <Route exact path="/movies"><Movies/></Route>
+                    <Route path="/movies/search"><MovieSearch/></Route>
                     <Route path="/movies/:movieId"><MovieDetails/></Route>
                     <Route path="/signin"><Signin/></Route>
                     <Route path="/signup"><Signup/></Route>
@@ -41,9 +43,12 @@ function App() {
                     <PrivateRoute path="/updateuser/:userId"><UpdateUser/></PrivateRoute>
                     <PrivateRoute path="/updatemovie/:updateMovieId"><UpdateMovie/></PrivateRoute>
                     <PrivateAdminRoute path="/admin/profile"><AdminProfile/></PrivateAdminRoute>
-                        <PrivateRoute path="/user/userdetails/:userId"><UserDetails/></PrivateRoute>
+                    <PrivateRoute path="/user/userdetails/:userId"><UserDetails/></PrivateRoute>
                 </Switch>
             </main>
+            <footer>
+                <Footer/>
+            </footer>
         </div>
 
     );

@@ -1,18 +1,25 @@
 import React from 'react';
 import Button from "./Button";
 import {TiArrowBack} from 'react-icons/ti';
-import {useHistory} from "react-router-dom";
 
-function BackButton() {
-    const history=useHistory();
+
+function BackButton({handleClick}) {
+
     return (
         <Button
             className="orange-btn back-btn"
             type="button"
-            handleClick={() => {history.push('/movies')}}
+            handleClick={handleClick}
         >
-            <TiArrowBack className="icon back"/>
-            <span className="btn-txt back-txt">Back</span>
+
+            <TiArrowBack
+                className="icon back"
+            />
+
+            <span
+                className="btn-txt back-txt">Back
+            </span>
+
         </Button>
     );
 }

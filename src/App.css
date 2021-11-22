@@ -8,14 +8,6 @@
   font-family: 'Roboto', sans-serif;
 }
 
-body{
-  background-color: var(--darkgrey1);
-}
-
-Nav{
-  z-index: 4;
-}
-
 
 /*GENERAL COLORS*/
 :root {
@@ -27,20 +19,28 @@ Nav{
   --orange:#f3a008;
 }
 
-
-.App {
+.app {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
+body{
+  background-color: var(--darkgrey1);
+}
+
+Nav{
+  z-index: 4;
+}
 
 main {
-  margin-top: 120px;
+  margin: 120px 0 80px 0;
 }
 
 
-/*STYLING CONTAINERS WITH FLEX ROW AND FLEX COLUMN*/
+
+/*STYLING GENERAL CONTAINERS WITH FLEX ROW AND FLEX COLUMN*/
 .position-cont-row{
   width:1024px;
   margin: 0 auto;
@@ -63,6 +63,7 @@ main {
   justify-content: space-between;
 }
 
+
 /*GENERAL SHADOWCONTAINER  STYLING*/
 .orange-cont{
   display: flex;
@@ -75,7 +76,7 @@ main {
 }
 
 
-/*GENERAL TITLE CONTAINER STYLING*/
+/*GENERAL TITLE CONTAINER STYLNG*/
 .title-cont{
   display: flex;
   align-self: stretch;
@@ -92,10 +93,12 @@ main {
 
 
 
-
-
-
 /*GENERAL BUTTON STYLING*/
+
+.default-btn.orange-btn{
+  color:#000;
+  background: linear-gradient(rgba(243,187,0,1) 0%, rgb(219, 120, 0) 100%);
+}
 
 .default-btn.orange-btn:hover{
   color: #f6eab1;
@@ -119,19 +122,6 @@ main {
   color:#cbb8b8;
 }
 
-.btn-txt.back-txt{
-  position: relative;
-  bottom: 11px;
-  font-size: 0.9rem;
-}
-
-
-
-/*GENERAL ICONS*/
-.icon.back{
-  font-size: 1.5rem;
-  bottom: 5px;
-}
 
 /*STYLING ERRORS*/
 .errormessage{

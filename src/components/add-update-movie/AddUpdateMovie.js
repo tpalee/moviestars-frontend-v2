@@ -5,9 +5,9 @@ import {AuthContext} from "../../context/AuthContext";
 import axios from "axios";
 import ShadowContainer from "../shadowcontainer/ShadowContainer";
 import AddReviewButton from "../buttons/AddReviewButton";
-import Button from "../buttons/Button";
-import '../add-update-movie/AddUpdateMovie.css'
-import {TiArrowBack} from 'react-icons/ti';
+import BackButton from "../buttons/BackButton";
+import '../add-update-movie/AddUpdateMovie.css';
+
 
 
 function AddUpdateMovie({name}) {
@@ -16,18 +16,19 @@ function AddUpdateMovie({name}) {
     const history = useHistory();
     const {register, handleSubmit, formState: {errors}} = useForm({mode: 'onBlur'});
     const [file, setFile] = useState(null);
-    const [movieId, setMovieId] = useState(null);
-    const [movieData, setMovieData] = useState(null);
+    const [movieData, setMovieData] = useState("");
     const [loading, toggleLoading] = useState(false);
 
+
+    //filemaker places filedata retrieved from the form in the useState file
     const fileMaker = (e) => {
         setFile(e.target.files[0]);
     }
 
+
     useEffect(() => {
         toggleLoading(true);
         if (name !== "add") {
-            setMovieId(updateMovieId);
             async function fetchMovie() {
                 try {
                     const result = await axios.get(`http://localhost:8080/movies/${updateMovieId}`,
@@ -37,15 +38,15 @@ function AddUpdateMovie({name}) {
                             }
                         });
                     setMovieData(result.data)
-                    console.log(result.data);
                 } catch (e) {
                     console.error("moviedata can't be fetched", e);
                 }
             }
 
             fetchMovie();
-            toggleLoading(false);
+
         }
+        toggleLoading(false);
     }, [name])
 
 
@@ -56,7 +57,6 @@ function AddUpdateMovie({name}) {
         const token = localStorage.getItem('token');
         let imageId;
         let movieId;
-
         //name 'add' is given as prop by addmovie to check if a movie has to be added or else updated
         if (name === 'add') {
             try {
@@ -66,7 +66,6 @@ function AddUpdateMovie({name}) {
                         movieDescription: movieDescription,
                         user: {username: user.username},
                         moviePoster: user.username,
-
                     }, {
                         headers: {
                             "Content-Type": "application/json",
@@ -145,23 +144,54 @@ function AddUpdateMovie({name}) {
     return (
         <section className="position-cont-col">
 
-            <ShadowContainer className="addmovie-cont">
-                <div className="title-cont">
+            {loading &&
+            <span>
+                loading...
+            </span>}
+
+            {!loading &&
+            <ShadowContainer
+                className="addmovie-cont"
+            >
+
+                <div
+                    className="title-cont"
+                >
+
                     {name === "add" ?
-                        <h3 className="title-cont-title">Add Movie</h3> :
-                        <h3 className="title-cont-title">Update Movie</h3>}
+                        <h3
+                            className="title-cont-title">Add Movie
+                        </h3>
+                        :
+                        <h3
+                            className="title-cont-title">Update Movie
+                        </h3>}
+
                 </div>
 
-                <div className="movie-form-cont">
-                    <form onSubmit={handleSubmit(onFormSubmit)}>
-                        <div className="movie-title-genre-cont">
-                            <label htmlFor="movietitle">
+                <div
+                    className="movie-form-cont"
+                >
+
+                    <form
+                        onSubmit={handleSubmit(onFormSubmit)}
+                    >
+
+                        <div
+                            className="movie-title-genre-cont"
+                        >
+
+                            <label
+                                htmlFor="movietitle"
+                            >
                                 Movietitle:
+
                                 <input
                                     type="text"
                                     className="movie-input title"
                                     id="movietitle"
                                     name="movietitle"
+                                    defaultValue={movieData.movieTitle}
                                     {...register("movieTitle",
                                         {
                                             required: {
@@ -171,27 +201,58 @@ function AddUpdateMovie({name}) {
                                             }
                                         })}
                                 />
+
                             </label>
 
                             <label
                                 htmlFor="moviegenre"
                                 className="movie-genre">genre:
+
                                 <select
                                     className="movie-select"
                                     {...register("movieGenre")}>
-                                    <option value="action">action</option>
-                                    <option value="thriller">thriller</option>
-                                    <option value="drama">drama</option>
-                                    <option value="comedy">comedy</option>
-                                    <option value="horror">horror</option>
-                                    <option value="musical">musical</option>
-                                    <option value="animation">animation</option>
-                                    <option value="other">other</option>
+                                    <option
+                                        value="action">action
+                                    </option>
+
+                                    <option
+                                        value="thriller">thriller
+                                    </option>
+
+                                    <option
+                                        value="drama">drama
+                                    </option>
+
+                                    <option
+                                        value="comedy">comedy
+                                    </option>
+
+                                    <option
+                                        value="horror">horror
+                                    </option>
+
+                                    <option
+                                        value="musical">musical
+                                    </option>
+
+                                    <option
+                                        value="animation">animation
+                                    </option>
+
+                                    <option
+                                        value="other">other
+                                    </option>
+
                                 </select>
+
                             </label>
+
                         </div>
+
                         {errors.movieTitle &&
-                        <div className="errormessage">
+                        <div
+                            className="errormessage"
+                        >
                             {errors.movieTitle.message}
                         </div>}
 
@@ -199,12 +260,14 @@ function AddUpdateMovie({name}) {
                             htmlFor="moviedescription">
                             Movie description:
                         </label>
+
                         <textarea
                             className="movie-input textarea"
                             name="moviedescription"
                             id="moviedescription"
                             placeholder="description of the movie"
                             cols="30" rows="10"
+                            defaultValue={movieData.movieDescription}
                             {...register("movieDescription",
                                 {
                                     required: {
@@ -213,14 +276,24 @@ function AddUpdateMovie({name}) {
                                         message: 'Sorry, input required with max-length of 2000 chars',
                                     }
                                 })}>
+
                          </textarea>
+
                         {errors.movieDescription &&
-                        <div className="errormessage">
+                        <div
+                            className="errormessage"
+                        >
                             {errors.movieDescription.message}
                         </div>}
 
-                        <div className="movie-file-add-cont">
-                            <label htmlFor="movieimage"/> Choose image
+                        <div
+                            className="movie-file-add-cont"
+                        >
+
+                            <label
+                                htmlFor="movieimage"
+                            /> Choose image
+
                             <input
                                 className="movie-input-file"
                                 type="file"
@@ -228,32 +301,32 @@ function AddUpdateMovie({name}) {
                                 name="movieimage"
                                 onChange={fileMaker}
                             />
+
                             {name === 'add' ?
                                 <AddReviewButton
                                     type="submit"
                                     className="addreview-btn"
                                     name="Add Movie"
-                                /> :
+                                />
+                                :
                                 <AddReviewButton
                                     type="submit"
                                     className="addreview-btn"
                                     name="Update Movie"
                                 />}
+
                         </div>
+
                     </form>
 
-                    <Button
-                        className="orange-btn"
-                        type="button"
-                        handleClick={() => {
-                            history.push('/movies')
-                        }}>
-                        <TiArrowBack className="icon back"/>
-                        <span className="btn-txt back-txt">Back</span>
-                    </Button>
+                    <BackButton
+                    handleClick={()=>{history.push('/movies')}}
+                    />
 
                 </div>
-            </ShadowContainer>
+
+            </ShadowContainer>}
+
         </section>
     );
 }

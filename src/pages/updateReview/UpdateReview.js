@@ -9,7 +9,8 @@ function UpdateReview() {
     return (
         <AddReviewComponent
         state={state}
-        reviewId={reviewId}/>
+        reviewId={reviewId}
+        />
     );
 }
 

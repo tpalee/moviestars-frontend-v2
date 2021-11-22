@@ -1,3 +1,4 @@
+/*CONTAINER STYLING*/
 .shadow-cont.addmovie-cont{
     background-color: var(--lightgrey2);
     width:750px;
@@ -22,17 +23,17 @@
 }
 
 .movie-file-add-cont{
-    margin:15px 0
+    margin:15px 0;
 }
+
+
+
+/*FORM STYLING*/
 
 .movie-input,.movie-input-file{
     display: block;
     background-color: var(--lightgrey1);
     border-radius: 4px;
-}
-
-.movie-input.title{
-    height:25px;
 }
 
 .movie-input{
@@ -46,8 +47,6 @@
     margin-right: 200px;
 }
 
-
-
 input[type=file]::file-selector-button {
     border: none;
     padding: 5px;
@@ -56,6 +55,9 @@ input[type=file]::file-selector-button {
     transition: 1s;
 }
 
+.movie-input.title{
+    height:25px;
+}
 
 .movie-input.textarea{
     width:700px;
@@ -93,7 +95,6 @@ input[type=file]::file-selector-button {
 }
 
 .movie-select{
-
     display: block;
     background: linear-gradient(rgba(243,187,0,1) 0%, rgb(219, 120, 0) 100%);
     border:none;

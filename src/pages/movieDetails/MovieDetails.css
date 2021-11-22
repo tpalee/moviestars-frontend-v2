@@ -1,18 +1,8 @@
+/*CONTAINER STYLING*/
 .shadow-cont.moviedetails-cont{
     width:800px;
     background-color: #000;
     padding:25px;
-}
-
-.moviedetails-image{
-    height:250px;
-}
-
-
-.moviedetails-info{
-    display: flex;
-    flex-direction: column;
-    margin: 0 0 0 45px;
 }
 
 .moviedetails-btn-cont{
@@ -21,6 +11,23 @@
     justify-content: space-between;
     margin:30px 0 0 0;
 }
+
+.moviedetails-info{
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 45px;
+}
+
+
+/*IMAGE STYLING*/
+
+.moviedetails-image{
+    height:250px;
+    max-width: 180px;
+}
+
+
+/*TEXT STYLING*/
 
 .moviedetails-h1{
     font-weight: normal;
@@ -42,7 +49,6 @@
 .moviedetails-small{
     color:#FFF;
 }
-
 
 .moviedetails-rating{
     color:#FFF;

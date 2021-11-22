@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import '../movies/Movies.css';
-import axios from "axios";
 import Movie from "../../components/movie/Movie";
+import axios from "axios";
 
 
-function Movies(props) {
+function Movies() {
     const [movieData, setMovieData] = useState(null);
     const [loading,setLoading]=useState(false);
 
@@ -31,9 +30,17 @@ function Movies(props) {
 
     return (
         <>
-            {loading && <span className="loading">loading...</span> }
+
+            {loading &&
+            <span className="loading">
+                loading...
+            </span> }
+
             {!loading && movieData &&
-            <div className="position-cont-row">
+            <div
+                className="position-cont-row"
+            >
+
             {movieData.map((movie) => {
                 return <Movie
                 key={movie.id}
@@ -43,8 +50,9 @@ function Movies(props) {
                 movieRating={movie.movieRating}
                 />
             })}
+
             </div>}
-        </>);
-            }
+
+        </>)}
 
 export default Movies;

@@ -1,5 +1,5 @@
 
-/*navcontent holds the navbeam(forms the navbar shape) and the navigation(buttons etc.)container*/
+/*STYLING CONTAINERS*/
 .navcontainer {
     width: 100vw;
     display: flex;
@@ -17,6 +17,11 @@
     width: 1024px;
     height: 70px;
     background-color: #000;
+}
+
+#search-home-cont{
+    display: flex;
+    flex-direction: row;
 }
 
 /*navbarshape*/
@@ -44,19 +49,11 @@
     filter: drop-shadow(0px 4px 3px #29292b);
 }
 
-
-/*logo in the nav*/
-.linklogonav {
-    margin-top: 6px;
-    position: absolute;
-    z-index: 2;
+#searchcontainer{
+    display: flex;
+    flex-direction: row;
 }
 
-.logonav {
-    z-index: 40;
-}
-
-/*.navigation holds the input field and the buttons*/
 .navigation {
     display: flex;
     flex-direction: row;
@@ -67,7 +64,6 @@
     position: absolute
 }
 
-/*list of the buttons*/
 #navbuttons {
     display: flex;
     flex-direction: row;
@@ -75,8 +71,14 @@
 }
 
 
+/*LOGOSTYLING*/
+.linklogonav {
+    margin-top: 6px;
+    position: absolute;
+    z-index: 40;
+}
 
-/*styling the input buttons*/
+/*BUTTON STYLING*/
 #searchmovieinput
 {
     height: 25px;
@@ -85,12 +87,6 @@
     border-radius: 6px 0px 0px 6px;
     padding-left:6px;
 }
-
-#searchcontainer{
-    display: flex;
-    flex-direction: row;
-}
-
 
 
 .navbutton:hover{
@@ -101,23 +97,15 @@
     border-radius: 0px 6px 6px 0px;
 }
 
-/*BUTTON STYLING*/
-.default-btn.orange-btn{
-    color:#000;
-    background: linear-gradient(rgba(243,187,0,1) 0%, rgb(219, 120, 0) 100%);
-}
-
-
 
 
 .default-btn.orange-btn.search-btn{
     border-radius: 0 5px 5px 0;
 }
 
-.btn-txt.delete{
-    position: relative;
-    bottom: 5px;
-}
+
+
+
 
 .btn-txt.add-txt{
     position: relative;
@@ -146,6 +134,10 @@
     bottom: 3px;
 }
 
+.home-txt{
+    position: relative;
+    bottom: 5px;
+}
 
 
 /*ICONS*/
@@ -159,7 +151,10 @@
 
 .icon.logout, .icon.myprofile, .icon.signup, .icon.signin{
     font-size: 1.2rem;
+}
 
+.icon.home{
+    font-size:1.2rem;
 }
 
 .icon.signin{
