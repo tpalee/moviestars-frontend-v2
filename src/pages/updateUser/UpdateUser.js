@@ -1,11 +1,12 @@
 import React from 'react';
-import {useParams} from 'react-router-dom';
+import AddUpdateUser from "../../components/add-update-user/AddUpdateUser";
 
-function UpdateUser({hallo}) {
-    console.log(hallo)
-    const {userId} = useParams();
+function UpdateUser() {
+
     return (
-        <div>update user</div>
+        <AddUpdateUser
+        name="updateuser"
+        />
     );
 }
 

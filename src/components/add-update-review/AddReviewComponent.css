@@ -1,9 +1,31 @@
+/*STYLING CONTAINERS*/
+
 .shadow-cont.review-input-cont{
     background-color: var(--lightgrey2);
     width:750px;
     display:flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+.form-cont{
+    margin-top: 10px;
+    padding:0 25px;
+}
+
+.btn-cont-addreview{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin:10px 0;
+}
+
+
+
+/*FORM STYLING*/
+
+.review-input{
+    display: block;
 }
 
 .review-input.textarea{
@@ -14,7 +36,6 @@
     overflow: auto;
     resize:none;
     border:none
-
 }
 
 .review-textarea:focus{
@@ -23,13 +44,10 @@
 }
 
 
-.default-btn.moviedetails-addreview-btn{
-    min-width: 90px;
-    border-radius: 4px;
-    padding: 5px 10px;
-    height:25px;
-    align-items: start;
-    margin-right: 10px;
-    background: linear-gradient(rgba(59,193,37,100) 0%, rgba(5,120,3,1) 100%);
-    color:#FFFFFFFF;
-}
+
+
+
+
+
+
+

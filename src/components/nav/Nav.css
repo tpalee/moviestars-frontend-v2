@@ -1,5 +1,5 @@
 
-/*navcontent holds the navbeam(forms the navbar shape) and the navigation(buttons etc.)container*/
+/*STYLING CONTAINERS*/
 .navcontainer {
     width: 100vw;
     display: flex;
@@ -17,6 +17,11 @@
     width: 1024px;
     height: 70px;
     background-color: #000;
+}
+
+#search-home-cont{
+    display: flex;
+    flex-direction: row;
 }
 
 /*navbarshape*/
@@ -44,19 +49,11 @@
     filter: drop-shadow(0px 4px 3px #29292b);
 }
 
-
-/*logo in the nav*/
-.linklogonav {
-    margin-top: 6px;
-    position: absolute;
-    z-index: 2;
+#searchcontainer{
+    display: flex;
+    flex-direction: row;
 }
 
-.logonav {
-    z-index: 1;
-}
-
-/*.navigation holds the input field and the buttons*/
 .navigation {
     display: flex;
     flex-direction: row;
@@ -67,7 +64,6 @@
     position: absolute
 }
 
-/*list of the buttons*/
 #navbuttons {
     display: flex;
     flex-direction: row;
@@ -75,12 +71,15 @@
 }
 
 
-.navlink{
-    text-decoration: none;
+/*LOGOSTYLING*/
+.linklogonav {
+    margin-top: 6px;
+    position: absolute;
+    z-index: 40;
 }
 
 
-/*styling the input buttons*/
+/*BUTTON STYLING*/
 #searchmovieinput
 {
     height: 25px;
@@ -88,22 +87,6 @@
     outline: none;
     border-radius: 6px 0px 0px 6px;
     padding-left:6px;
-}
-
-#searchcontainer{
-    display: flex;
-    flex-direction: row;
-}
-
-/*general styling buttons*/
-.navbutton{
-    min-width: 90px;
-    border-radius: 4px;
-    padding: 5px 10px;
-    height:25px;
-    background: linear-gradient(rgba(243,187,0,1) 0%, rgb(219, 120, 0) 100%);
-    align-items: start;
-    margin-right: 10px;
 }
 
 
@@ -115,15 +98,41 @@
     border-radius: 0px 6px 6px 0px;
 }
 
-.addmoviebutton,.signupbutton{
-    background: linear-gradient(rgba(59,193,37,100) 0%, rgba(5,120,3,1) 100%);
-    color:#FFFFFFFF;
+.default-btn.orange-btn.search-btn{
+    border-radius: 0 5px 5px 0;
 }
 
-.addmoviebutton:hover,.signupbutton:hover{
-    color: #6eb824;
+.btn-txt.add-txt{
+    position: relative;
+    font-size: 0.9rem;
+    bottom: 2px;
 }
 
+.btn-txt.logout-txt,.btn-txt.profile-txt,.signup-txt{
+    position: relative;
+    font-size: 0.9rem;
+    bottom: 6px;
+}
+
+.btn-txt.signin-txt{
+    position: relative;
+    bottom: 5px;
+}
+
+.signup-txt{
+    position: relative;
+    bottom: 7px;
+}
+
+.search-txt{
+    position: relative;
+    bottom: 3px;
+}
+
+.home-txt{
+    position: relative;
+    bottom: 5px;
+}
 
 
 /*ICONS*/
@@ -135,30 +144,25 @@
     bottom: 3px;
 }
 
-.icon.logout, .icon.myprofile, .icon.signup{
+.icon.logout, .icon.myprofile, .icon.signup, .icon.signin{
     font-size: 1.2rem;
-    bottom: 7px;
 }
 
-.icon.login{
+.icon.home{
+    font-size:1.2rem;
+}
+
+.icon.signin{
     font-size: 1.1rem;
-    bottom: 6px;
-}
-/*buttontext*/
-.buttontextspan{
-    font-size: 0.9rem;
-    position: relative;
-    bottom: 6px;
 }
 
-.buttontextspan.logouttext, .buttontextspan.myprofiletext, .buttontextspan.logintext,.buttontextspan.signuptext{
-    font-size: 0.9rem;
-    position: relative;
-    bottom: 12px;
+.icon.plus{
+    bottom: -1px;
 }
 
-.buttontextspan.logintext{
-    font-size: 0.9rem;
-    position: relative;
-    bottom: 9px;
-}
+
+
+
+
+
+

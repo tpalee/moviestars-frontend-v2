@@ -1,0 +1,64 @@
+/*CONTAINER STYLING*/
+.footer-cont{
+    position: fixed;
+    width: 100vw;
+    bottom: 0.1px;
+    background-color:#000;
+    height:80px;
+    filter: drop-shadow(0px -4px 3px #29292b);
+}
+
+.position-cont-row.footer-row{
+    justify-content: space-between;
+}
+
+.social-cont{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    height: 80px;
+}
+
+.contact-cont{
+    display: flex;
+    align-items: center;
+    color:#FFF;
+}
+
+
+/*CONTACT STYLING*/
+.footer-txt{
+    line-height: 1rem;
+    font-size: 0.8rem;
+    margin-left: 20px;
+}
+
+.footer-contact-txt{
+    color:var(--orange);
+    font-weight: bold;
+}
+
+.footer-email{
+    color:#FFF;
+}
+
+.footer-email:hover{
+    color:var(--orange);
+}
+
+
+/*SOCIAL ICONS AND LINK STYLING*/
+.icon.social{
+    color: var(--orange);
+    font-size: 1.6rem;
+}
+
+.icon.social:hover{
+    color: #f6eab1;
+    font-size: 1.6rem;
+}
+
+.footer-a{
+    margin-right: 20px;
+}

@@ -1,42 +1,69 @@
+/*CONTAINER STYLING*/
 .shadow-cont.profile-cont{
-    width: 800px;
     display:flex;
     flex-direction: column;
 }
 
 .shadow-cont.info-cont{
-    font-size: 1rem;
-    width: 200px;
-    height:150px;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    text-align: center;
+    width: 300px;
     padding:20px;
     background-color: var(--lightgrey1);
     display:flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .shadow-cont.user-info{
     font-size: 1rem;
-    width: 500px;
+    width: 1024px;
+    margin-top: 10px;
     padding:20px;
     background-color: var(--lightgrey1);
     display:flex;
     flex-direction: row;
 }
 
-.position-cont-row.pos-admin{
-    width:750px;
-    justify-content: space-between;
-}
 
+/*USER LIST STYLING*/
 .userlist{
+    width:970px;
     display: flex;
+    justify-content: flex-start;
     flex-direction: row;
-    justify-content: space-between;
     background-color: var(--lightgrey2);
     padding:5px;
+    overflow: hidden;
 }
 
-.ul-user{
+.ul-users{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    list-style-type: none;
+}
+
+.user-li{
+    margin:5px  5px;
+    display: flex;
+}
+
+
+.user-detail,.user-email{
+    font-size: 0.9rem;
+}
+
+.user-detail{
+    width:300px;
+}
+
+.user-email{
+    width:450px;
+}
+
+
+/*TEXT STYLING*/
+.admin-details-email{
+    margin-bottom: 20px;
 }

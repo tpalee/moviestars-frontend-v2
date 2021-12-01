@@ -1,102 +1,157 @@
-import {useHistory,Link} from 'react-router-dom';
-import {AuthContext} from "../../context/AuthContext";
+import {useHistory, Link} from 'react-router-dom';
 import Button from "../buttons/Button";
 import {useContext} from "react";
 import {useForm} from 'react-hook-form';
+import {AuthContext} from "../../context/AuthContext";
 import './Nav.css';
-import {FaSearch, FaPlus, FaUser, FaUserCheck,FaUserTimes,FaUserPlus} from 'react-icons/fa';
-/*import images*/
+import {FaSearch, FaPlus, FaUser, FaUserCheck, FaUserTimes, FaUserPlus,FaHome} from 'react-icons/fa';
 import moviestarslogo from '../../assets/img/moviestarslogo.png';
 
 
-function Nav({setSearchvalue}) {
-    const history=useHistory();
-    const {isAuth, logout,isAdmin} = useContext(AuthContext);
+function Nav() {
+    const history = useHistory();
+    const {isAuth, user, logout, isAdmin} = useContext(AuthContext);
     const {register, handleSubmit} = useForm();
 
-
-    function onFormSubmit(data){
-        const{search}=data
-      setSearchvalue(search)
-
+    function onFormSubmit(data) {
+        const {search} = data;
+        history.push('/movies/search',{search});
     }
-console.log(isAdmin);
+
 
     return (
-        /* nav-element holds all the navigation elements*/
         <nav className="navcontainer">
             {/* nav-beam created for the shape of the beam */}
             <div className="navbeam">
-                <Link to="/movies" className="linklogonav"><img src={moviestarslogo} className="logonav" alt="logo"/></Link>
+                <Link
+                    to="/movies"
+                    className="linklogonav">
+
+                    <img
+                        src={moviestarslogo}
+                        className="logonav"
+                        alt="logo"/>
+
+                </Link>
+
             </div>
-            {/*  holds all the navigation forms and buttons*/}
+
             <div className="navigation">
 
-                {/* search form*/}
-                <div id="search-sort-container">
-                    <form id="searchcontainer" onSubmit={handleSubmit(onFormSubmit)}>
+                <div id="search-home-cont">
+
+                    <form id="searchcontainer"
+                          onSubmit={handleSubmit(onFormSubmit)}>
+
                         <label htmlFor="search">
+
                             <input type="text"
                                    id="searchmovieinput"
                                    name="search"
                                    placeholder="search movietitle"
                                    {...register("search")}
                             />
+
                         </label>
-                        <Button name="searchbutton" className="navbutton searchbutton" type="submit">
-                                    <FaSearch className="icon search"/>
-                                    <span className="buttontextspan">search</span>
+
+                        <Button
+                            type="submit"
+                            className="orange-btn search-btn">
+
+                            <FaSearch className="icon search"/>
+
+                            <span className="btn-txt search-txt">search</span>
+
                         </Button>
+
                     </form>
+
+                    <Button
+                        type="button"
+                        className="orange-btn home-btn"
+                        handleClick={()=>{history.push('/movies')}}
+                    >
+                        <FaHome className="icon home"/>
+
+                        <span className="btn-txt home-txt">home</span>
+
+                    </Button>
+
                 </div>
 
-                {/*buttons with navlinks*/}
+                {/*buttons with navlinks, only showing when user is signed in*/}
                 <div id="navbuttons">
+
                     {!isAuth ?
                         <>
-                        <button
-                            type="button"
-                            onClick={() => history.push('/signin')}
-                            name="login"
-                            className="navbutton loginbutton">
-                            <FaUser className="icon login"/>
-                            <span className="buttontextspan logintext">Login</span>
-                        </button>
-                        <button
-                            name="signup"
-                            onClick={() => history.push('/signup')}
-                            className="navbutton signupbutton">
-                            <FaUserPlus className="icon signup"/>
-                            <span className="buttontextspan signuptext">signup</span>
-                        </button>
-                    </>
-                    :
-                    <>
-                        <button
-                            name="add-movie"
-                            onClick={() => history.push('/addmovie')}
-                            className="navbutton addmoviebutton">
-                            <FaPlus className="icon search"/>
-                            <span className="buttontextspan addmovietext">Add Movie</span>
-                        </button>
-                        <button
-                            name="myprofile"
-                            className="navbutton myprofilebutton"
-                            onClick={()=>{isAuth && !isAdmin ? history.push('/user/profile'):history.push('/admin/profile')}}>
-                            <FaUserCheck className="icon myprofile"/>
-                            <span className="buttontextspan myprofiletext">My Profile</span>
-                        </button>
-                        <button
-                            onClick={logout}
-                            name="logout"
-                            className="navbutton logoutbutton">
-                            <FaUserTimes className="icon logout"/>
-                            <span className="buttontextspan logouttext">logout</span>
-                        </button>
+                            <Button
+                                type="button"
+                                handleClick={() => history.push('/signin')}
+                                className="orange-btn">
+
+                                <FaUser className="icon signin"/>
+
+                                <span className="btn-txt signin-txt">Sign in</span>
+
+                            </Button>
+
+                            <Button
+                                type="button"
+                                handleClick={() => history.push('/signup')}
+                                className="green-btn">
+
+                                <FaUserPlus className="icon signup"/>
+
+                                <span className="btn-txt signup-txt">Sign up</span>
+
+                            </Button>
+                        </>
+                        :
+                        <>
+
+                            {/*buttons with navlinks, only showing when user is NOT signed in*/}
+                            <Button
+                                handleClick={() => history.push('/addmovie')}
+                                className="green-btn">
+
+                                <FaPlus className="icon plus"/>
+
+                                <span className="btn-txt add-txt">Add Movie</span>
+
+                            </Button>
+
+                            <Button
+                                className="orange-btn"
+                                handleClick={() => {
+                                    isAuth && !isAdmin ? history.push(`/user/userdetails/${user.username}`)
+                                        :
+                                        history.push('/admin/profile')
+                                }}
+                            >
+
+                                <FaUserCheck className="icon myprofile"/>
+
+                                <span className="btn-txt profile-txt">My Profile</span>
+
+                            </Button>
+
+                            <Button
+                                className="orange-btn"
+                                handleClick={logout}>
+
+                                <FaUserTimes className="icon logout"/>
+
+                                <span className="btn-txt logout-txt">logout</span>
+
+                            </Button>
+
                         </>
                     }
+
                 </div>
+
             </div>
+
         </nav>)
 }
 

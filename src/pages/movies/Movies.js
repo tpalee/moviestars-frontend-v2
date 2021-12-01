@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import '../movies/Movies.css';
-import axios from "axios";
 import Movie from "../../components/movie/Movie";
+import axios from "axios";
 
 
-function Movies(props) {
+function Movies() {
     const [movieData, setMovieData] = useState(null);
+    const [loading,setLoading]=useState(false);
 
     useEffect(() => {
+        setLoading(true);
         async function fetchMovies() {
             try {
                 const result = await axios.get('http://localhost:8080/movies',
@@ -16,27 +17,27 @@ function Movies(props) {
                             "Content-Type":"application/json",
                         }
                     });
-                setMovieData(result.data)
-
-
-
-
+                setMovieData(result.data);
             } catch (error) {
                 console.error();
             }
         }
+        setLoading(false);
+        fetchMovies();
 
-        fetchMovies()
     }, [])
 
 
-console.log(movieData)
-
     return (
         <>
-            <div className="position-cont-row">
-            {movieData && movieData.map((movie) => {
 
+            {loading &&
+            <span className="loading">loading...</span> }
+
+            {!loading && movieData &&
+            <div className="position-cont-row">
+
+            {movieData.map((movie) => {
                 return <Movie
                 key={movie.id}
                 movieId={movie.id}
@@ -45,8 +46,9 @@ console.log(movieData)
                 movieRating={movie.movieRating}
                 />
             })}
-            </div>
-        </>);
-            }
+
+            </div>}
+
+        </>)}
 
 export default Movies;

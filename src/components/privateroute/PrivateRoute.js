@@ -4,13 +4,12 @@ import {AuthContext} from "../../context/AuthContext";
 
 
 function PrivateRoute({isAut, children, ...rest}){
-    const {isAuth,isAdmin} = useContext(AuthContext);
+    const {isAuth} = useContext(AuthContext);
     const history=useHistory();
 
     return(
         <Route {...rest}>
-
-            {isAuth && (isAdmin===false) ? children : history.push('/movies')}
+            {isAuth  ? children : history.push('/movies')}
         </Route>
     )
 }

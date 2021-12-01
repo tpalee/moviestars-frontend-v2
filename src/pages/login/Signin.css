@@ -55,9 +55,4 @@
     width:200px;
 }
 
-label{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
 
-}
