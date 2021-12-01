@@ -71,6 +71,7 @@ function AddUpdateUser({name}) {
 
     return (
         <section className="position-cont-col">
+
             <ShadowContainer className="auuser-cont">
 
                 <div className="title-cont">
@@ -139,6 +140,7 @@ function AddUpdateUser({name}) {
                             }
                         })}
                     />
+
                     {errors.password &&
                     <div className="errormessage">
                         {errors.password.message}

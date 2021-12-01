@@ -37,6 +37,7 @@ function Review({review, reviewRating, badLanguage, reviewer, reviewId}) {
         }
         history.go(0)
     }
+
     if ((badLanguage)) {
         color = "red"
     } else {
@@ -45,32 +46,51 @@ function Review({review, reviewRating, badLanguage, reviewer, reviewId}) {
 
     return (
         <ShadowContainer className={`review-cont ${color}`}>
+
             <h3 className="review-title">review</h3>
+
             <p className="review-txt">{review}</p>
+
             <small className="review-small"> reviewed by: {reviewer}</small>
 
-<div className="review-bottom">
-    <p className="review-txt">rating: <span className="rating-txt">{reviewRating}</span></p>
-            <div className="btn-cont review">
-            {user !== null && reviewer === user.username &&
+            <div className="review-bottom">
 
-            <Button
-                type="button"
-                className="green-btn"
-                handleClick={() => {history.push(`/updatereview/${reviewId}`, {reviewInfo})}}
-            >
-                <MdSystemUpdateAlt className="icon update"/>
-                <span className="btn-txt update-txt">Update Review</span>
-            </Button>}
+                <p className="review-txt">rating:
 
-            <Button
-                className="red-btn"
-                handleClick={badLanguageHandler}>
-                <MdWarning className="icon warning"/>
-                <span className="btn-txt warning-txt">Report harmfull content</span>
-            </Button>
-</div>
-</div>
+                    <span className="rating-txt">{reviewRating}</span></p>
+
+                <div className="btn-cont review">
+
+                    {user !== null && reviewer === user.username &&
+                    <Button
+                        type="button"
+                        className="green-btn"
+                        handleClick={() => {
+                            history.push(`/updatereview/${reviewId}`, {reviewInfo})
+                        }}
+                    >
+
+                        <MdSystemUpdateAlt className="icon update"/>
+
+                        <span className="btn-txt update-txt">Update Review</span>
+
+                    </Button>}
+
+                    <Button
+                        className="red-btn"
+                        handleClick={badLanguageHandler}
+                    >
+
+                        <MdWarning className="icon warning"/>
+
+                        <span className="btn-txt warning-txt">Report harmfull content</span>
+
+                    </Button>
+
+                </div>
+
+            </div>
+
         </ShadowContainer>
     );
 }

@@ -6,16 +6,11 @@ function DeleteButton({name,handleClick}) {
     return (
         <Button
             className="red-btn delete-btn"
-            handleClick={handleClick}
-        >
+            handleClick={handleClick}>
 
-            <MdDelete
-                className="icon delete"
-            />
+            <MdDelete className="icon delete"/>
 
-            <span
-                className="delete-btn">{name}
-            </span>
+            <span className="delete-btn">{name}</span>
 
         </Button>
     );

@@ -18,22 +18,21 @@ function MovieSearch() {
                             "Content-Type":"application/json",
                         }
                     });
-                setMovieData(result.data)
+                setMovieData(result.data);
             } catch (e) {
                 console.error('no moviedata fetched',e);
             }
         }
-        toggleLoading(false)
-        fetchMovies()
+        toggleLoading(false);
+        fetchMovies();
     }, [state])
 
 
     return (
         <>
+
             {loading &&
-            <span
-                className="loading">loading...
-            </span> }
+            <span className="loading">loading...</span> }
 
             {!loading && movieData &&
             <div className="position-cont-row">
@@ -47,7 +46,11 @@ function MovieSearch() {
                             movieImage={movie.image}
                             movieRating={movie.movieRating}
                         />
-                    }})}
+                    }
+                        return <span key={movie.id}></span>;
+                }
+
+                )}
 
             </div>}
 

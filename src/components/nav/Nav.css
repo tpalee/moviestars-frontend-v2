@@ -78,6 +78,7 @@
     z-index: 40;
 }
 
+
 /*BUTTON STYLING*/
 #searchmovieinput
 {
@@ -97,15 +98,9 @@
     border-radius: 0px 6px 6px 0px;
 }
 
-
-
 .default-btn.orange-btn.search-btn{
     border-radius: 0 5px 5px 0;
 }
-
-
-
-
 
 .btn-txt.add-txt{
     position: relative;

@@ -9,7 +9,6 @@ import BackButton from "../buttons/BackButton";
 import '../add-update-movie/AddUpdateMovie.css';
 
 
-
 function AddUpdateMovie({name}) {
     const {user} = useContext(AuthContext);
     const {updateMovieId} = useParams();
@@ -75,7 +74,6 @@ function AddUpdateMovie({name}) {
                 )
                 //get the movieId out of the locationheader
                 const locationHeader = result.headers.location;
-                console.log(locationHeader);
                 let id = (locationHeader.lastIndexOf('/'));
                 movieId = locationHeader.substring(id + 1);
             } catch (e) {
@@ -93,12 +91,12 @@ function AddUpdateMovie({name}) {
                     }, {
                         headers: {
                             "Content-Type": "application/json",
-                            Authorization: `Bearer ${token}`
+                            Authorization: `Bearer ${token}`,
                         }
                     }
                 )
             } catch (e) {
-                console.error('no moviedata posted',e)
+                console.error('no moviedata posted', e);
             }
 
         }
@@ -109,7 +107,7 @@ function AddUpdateMovie({name}) {
                     , {
                         headers: {
                             'Content-Type': 'multipart/form-data',
-                            Authorization: `Bearer ${token}`
+                            Authorization: `Bearer ${token}`,
                         }
                     }
                 )
@@ -118,13 +116,13 @@ function AddUpdateMovie({name}) {
                 let id = (locationHeader.lastIndexOf('/'));
                 imageId = locationHeader.substring(id + 1);
             } catch (e) {
-                console.error('no image posted in database',e)
+                console.error('no image posted in database', e);
             }
 
             //assign the image to the movie
             try {
                 await axios.patch(`http://localhost:8080/movies/${movieId}/images/${imageId}`, {
-                        image: {id: `${imageId}`}
+                        image: {id: `${imageId}`},
                     }
                     , {
                         headers: {
@@ -134,7 +132,7 @@ function AddUpdateMovie({name}) {
                     }
                 )
             } catch (e) {
-                console.error('no image assigned to movie', e)
+                console.error('no image assigned to movie', e);
             }
         }
         history.push('/movies');
@@ -144,46 +142,27 @@ function AddUpdateMovie({name}) {
     return (
         <section className="position-cont-col">
 
-            {loading &&
-            <span>
-                loading...
-            </span>}
+            {loading && <span>loading...</span>}
 
             {!loading &&
-            <ShadowContainer
-                className="addmovie-cont"
-            >
+            <ShadowContainer className="addmovie-cont">
 
-                <div
-                    className="title-cont"
-                >
+                <div className="title-cont">
 
                     {name === "add" ?
-                        <h3
-                            className="title-cont-title">Add Movie
-                        </h3>
+                        <h3 className="title-cont-title">Add Movie</h3>
                         :
-                        <h3
-                            className="title-cont-title">Update Movie
-                        </h3>}
+                        <h3 className="title-cont-title">Update Movie</h3>}
 
                 </div>
 
-                <div
-                    className="movie-form-cont"
-                >
+                <div className="movie-form-cont">
 
-                    <form
-                        onSubmit={handleSubmit(onFormSubmit)}
-                    >
+                    <form onSubmit={handleSubmit(onFormSubmit)}>
 
-                        <div
-                            className="movie-title-genre-cont"
-                        >
+                        <div className="movie-title-genre-cont">
 
-                            <label
-                                htmlFor="movietitle"
-                            >
+                            <label htmlFor="movietitle">
                                 Movietitle:
 
                                 <input
@@ -211,38 +190,14 @@ function AddUpdateMovie({name}) {
                                 <select
                                     className="movie-select"
                                     {...register("movieGenre")}>
-                                    <option
-                                        value="action">action
-                                    </option>
-
-                                    <option
-                                        value="thriller">thriller
-                                    </option>
-
-                                    <option
-                                        value="drama">drama
-                                    </option>
-
-                                    <option
-                                        value="comedy">comedy
-                                    </option>
-
-                                    <option
-                                        value="horror">horror
-                                    </option>
-
-                                    <option
-                                        value="musical">musical
-                                    </option>
-
-                                    <option
-                                        value="animation">animation
-                                    </option>
-
-                                    <option
-                                        value="other">other
-                                    </option>
-
+                                    <option value="action">action</option>
+                                    <option value="thriller">thriller</option>
+                                    <option value="drama">drama</option>
+                                    <option value="comedy">comedy</option>
+                                    <option value="horror">horror</option>
+                                    <option value="musical">musical</option>
+                                    <option value="animation">animation</option>
+                                    <option value="other">other</option>
                                 </select>
 
                             </label>
@@ -250,9 +205,7 @@ function AddUpdateMovie({name}) {
                         </div>
 
                         {errors.movieTitle &&
-                        <div
-                            className="errormessage"
-                        >
+                        <div className="errormessage">
                             {errors.movieTitle.message}
                         </div>}
 
@@ -276,23 +229,17 @@ function AddUpdateMovie({name}) {
                                         message: 'Sorry, input required with max-length of 2000 chars',
                                     }
                                 })}>
-
                          </textarea>
 
                         {errors.movieDescription &&
-                        <div
-                            className="errormessage"
-                        >
+                        <div className="errormessage">
                             {errors.movieDescription.message}
                         </div>}
 
-                        <div
-                            className="movie-file-add-cont"
-                        >
+                        <div className="movie-file-add-cont">
 
-                            <label
-                                htmlFor="movieimage"
-                            /> Choose image
+                            <label htmlFor="movieimage"/>
+                            Choose image
 
                             <input
                                 className="movie-input-file"
@@ -319,9 +266,9 @@ function AddUpdateMovie({name}) {
 
                     </form>
 
-                    <BackButton
-                    handleClick={()=>{history.push('/movies')}}
-                    />
+                    <BackButton handleClick={() => {
+                        history.push('/movies')
+                    }}/>
 
                 </div>
 

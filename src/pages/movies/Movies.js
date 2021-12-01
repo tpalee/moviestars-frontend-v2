@@ -17,13 +17,13 @@ function Movies() {
                             "Content-Type":"application/json",
                         }
                     });
-                setMovieData(result.data)
+                setMovieData(result.data);
             } catch (error) {
                 console.error();
             }
         }
-        setLoading(false)
-        fetchMovies()
+        setLoading(false);
+        fetchMovies();
 
     }, [])
 
@@ -32,14 +32,10 @@ function Movies() {
         <>
 
             {loading &&
-            <span className="loading">
-                loading...
-            </span> }
+            <span className="loading">loading...</span> }
 
             {!loading && movieData &&
-            <div
-                className="position-cont-row"
-            >
+            <div className="position-cont-row">
 
             {movieData.map((movie) => {
                 return <Movie

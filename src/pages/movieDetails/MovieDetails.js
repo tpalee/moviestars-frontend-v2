@@ -19,7 +19,7 @@ function MovieDetails() {
     const history = useHistory();
     const {user} = useContext(AuthContext);
     const {state} = useLocation();
-    const [loading, toggleLoading] = useState(false)
+    const [loading, toggleLoading] = useState(false);
 
 
     useEffect(() => {
@@ -34,10 +34,10 @@ function MovieDetails() {
                     },
                     signal: abortCont.signal,
                 })
-                setMovie(result.data)
+                setMovie(result.data);
             } catch (e) {
                 if (e.name === 'AbortError') {
-                    console.log("fetchData aborted")
+                    console.log("fetchData aborted");
                 }
                 console.error("no moviedata fetched", e);
             }
@@ -46,7 +46,7 @@ function MovieDetails() {
         fetchMovieData()
         toggleLoading(false);
         return () => {
-            abortCont.abort()
+            abortCont.abort();
         }
     }, [])
 
@@ -63,25 +63,28 @@ function MovieDetails() {
                     },
                     signal: abortCont.signal,
                 })
-                setReview(result.data)
+                setReview(result.data);
             } catch (e) {
                 if (e.name === 'AbbortError') {
-                    console.log("fetchData aborted")
+                    console.log("fetchData aborted");
                 }
                 console.error("no reviewdata fetched", e);
             }
         }
+
         fetchReviewData()
         toggleLoading(false);
         return () => {
-            abortCont.abort()
+            abortCont.abort();
         }
-    }, [])
+    }, [movie])
 
 
     return (
         <section className="position-cont-col">
+
             {loading && <span className="loading">loading...</span>}
+
             {!loading && movie &&
             <>
                 <ShadowContainer className="moviedetails-cont">
@@ -102,27 +105,18 @@ function MovieDetails() {
                     }
 
                     <div className="moviedetails-info">
-                        <h1 className="moviedetails-h1">
-                            {movie.movieTitle}
-                        </h1>
 
-                        <p className="moviedetail-genre">
-                            genre: {movie.movieGenre}
-                        </p>
+                        <h1 className="moviedetails-h1">{movie.movieTitle}</h1>
 
-                        <p className="moviedetails-description">
-                            {movie.movieDescription}
-                        </p>
+                        <p className="moviedetail-genre">genre: {movie.movieGenre}</p>
 
-                        <p className="moviedetails-rating">
-                            rating:
+                        <p className="moviedetails-description">{movie.movieDescription}</p>
+
+                        <p className="moviedetails-rating">rating:
                             <span className="moviedetails-spanrating">{movie.movieRating}</span>
                         </p>
 
-                        <small
-                            className="moviedetails-small">
-                            posted by: {movie.moviePoster}
-                        </small>
+                        <small className="moviedetails-small">posted by: {movie.moviePoster}</small>
 
                         <div className="moviedetails-btn-cont">
                             <BackButton
@@ -143,8 +137,11 @@ function MovieDetails() {
                             <Button
                                 className="green-btn"
                                 handleClick={() => history.push(`/updatemovie/${movieId}`)}>
+
                                 <MdSystemUpdateAlt className="icon update"/>
+
                                 <span className="btn-txt update-txt">Update Movie</span>
+
                             </Button>}
 
                         </div>
@@ -158,9 +155,7 @@ function MovieDetails() {
                     {(review.length !== 0) &&
                     <ShadowContainer className="orange-cont">
 
-                        <h1
-                            className="moviedetails-reviews-title">REVIEWS
-                        </h1>
+                        <h1 className="moviedetails-reviews-title">REVIEWS</h1>
 
                     </ShadowContainer>}
 
@@ -178,8 +173,8 @@ function MovieDetails() {
                     })}
 
                 </section>
-            </>
 
+            </>
             }
         </section>
     );

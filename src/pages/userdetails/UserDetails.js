@@ -33,29 +33,29 @@ function UserDetails() {
                 const result = await axios.get(`http://localhost:8080/users/${userId}`, {
                     headers: {
                         'Content-Type': "application/json",
-                        Authorization: `Bearer ${token}`
+                        Authorization: `Bearer ${token}`,
                     }
                 })
                 setUserInfo(result.data);
             } catch (e) {
-                console.error("no userData fetched" + e)
+                console.error("no userData fetched" + e);
                 toggleError(true);
             }
         }
 
-        fetchUserData()
+        fetchUserData();
 
         async function fetchMovieData() {
             try {
                 const result = await axios.get(`http://localhost:8080/users/${userId}/movies`, {
                     headers: {
                         'Content-Type': "application/json",
-                        Authorization: `Bearer ${token}`
+                        Authorization: `Bearer ${token}`,
                     }
                 })
                 setMovieData(result.data);
             } catch (e) {
-                console.error("no MovieData fetched" + e)
+                console.error("no MovieData fetched" + e);
                 toggleError(true);
             }
         }
@@ -67,7 +67,7 @@ function UserDetails() {
                 const result = await axios(`http://localhost:8080/users/${userId}/reviews`, {
                     headers: {
                         'Content-Type': "application/json",
-                        Authorization: `Bearer ${token}`
+                        Authorization: `Bearer ${token}`,
                     }
                 })
                 setReviewData(result.data)
@@ -77,9 +77,9 @@ function UserDetails() {
             }
         }
 
-        fetchReviewData()
-        toggleLoading(false)
-    }, [userId, dataChange])
+        fetchReviewData();
+        toggleLoading(false);
+    }, [userId, dataChange]);
 
 
     async function deleteMovieReview(urltype, id) {
@@ -99,7 +99,7 @@ function UserDetails() {
                 }
             })
         } catch (e) {
-            console.error("sorry, can't delete", e)
+            console.error("sorry, can't delete", e);
         }
         setDataChange(true);
     }
@@ -109,52 +109,32 @@ function UserDetails() {
         <>
 
             {((userInfo.username === user.username) || (isAdmin)) &&
-            <section
-                className="position-cont-col"
-            >
+            <section className="position-cont-col">
 
                 {loading &&
-                <span>
-                    loading...
-                </span>}
+                <span>loading...</span>}
 
                 {error &&
-                <span>
-                    something went wrong, data not loaded
-                </span>}
+                <span>something went wrong, data not loaded</span>}
 
                 {isAdmin ?
-                    <h1>
-                        userdetails: {userId}
-                    </h1>
+                    <h1>userdetails: {userId}</h1>
                     :
-                    <h1>
-                        Welcome {userId}
-                    </h1>}
+                    <h1>Welcome {userId}</h1>}
 
-                <ShadowContainer
-                    className="userdetails-cont"
-                >
+                <ShadowContainer className="userdetails-cont">
 
-                    <p
-                        className="userdetails-userinfo-txt">personal info:
-                    </p>
+                    <p className="userdetails-userinfo-txt">personal info:</p>
 
-                    <p>
-                        {userInfo.username}
-                    </p>
+                    <p>{userInfo.username}</p>
 
-                    <p>
-                        {userInfo.email}
-                    </p>
+                    <p>{userInfo.email}</p>
 
-                    <div
-                        className="userdetails-btn-cont"
-                    >
+                    <div className="userdetails-btn-cont">
 
                         <BackButton
                             handleClick={() => {
-                                history.goBack()
+                                history.goBack();
                             }}
                         />
 
@@ -164,13 +144,9 @@ function UserDetails() {
                             className="green-btn userdetails-update-btn"
                             handleClick={() => history.push(`/updateuser/${userInfo.username}`)}>
 
-                            <MdSystemUpdateAlt
-                                className="icon update"
-                            />
+                            <MdSystemUpdateAlt className="icon update"/>
 
-                            <span
-                                className="btn-txt update-txt">Update user
-                            </span>
+                            <span className="btn-txt update-txt">Update user</span>
 
                         </Button>}
 
@@ -178,19 +154,13 @@ function UserDetails() {
 
                 </ShadowContainer>
 
-                <ShadowContainer
-                    className="orange-cont"
-                >
+                <ShadowContainer className="orange-cont">
 
-                    <h1
-                        className="details-title">Posted movies: {movieData.length}
-                    </h1>
+                    <h1 className="details-title">Posted movies: {movieData.length}</h1>
 
                 </ShadowContainer>
 
-                <div
-                    className="userdetails-movies-cont"
-                >
+                <div className="userdetails-movies-cont">
 
                     {!loading && movieData && movieData.map((movie) => {
                         return (
@@ -207,7 +177,7 @@ function UserDetails() {
                                 {isAdmin &&
                                 <DeleteButton
                                     handleClick={() => {
-                                        deleteMovieReview("movie", movie.id)
+                                        deleteMovieReview("movie", movie.id);
                                     }}
                                     name="Delete"
                                 />}
@@ -217,24 +187,17 @@ function UserDetails() {
 
                 </div>
 
-                <ShadowContainer
-                    className="orange-cont"
-                >
+                <ShadowContainer className="orange-cont">
 
-                    <h1
-                        className="details-title">Posted reviews: {reviewData.length}
-                    </h1>
+                    <h1 className="details-title">Posted reviews: {reviewData.length}</h1>
 
                 </ShadowContainer>
 
-                <div
-                    className="userdetails-reviews-cont"
-                >
+                <div className="userdetails-reviews-cont">
 
                     {reviewData && reviewData.map((review) => {
                         return (
-                            <div key={review.id}
-                            >
+                            <div key={review.id}>
 
                                 <Review
                                     reviewId={review.id}
@@ -247,7 +210,7 @@ function UserDetails() {
                                 {isAdmin &&
                                 <DeleteButton
                                     handleClick={() => {
-                                        deleteMovieReview("review", review.id)
+                                        deleteMovieReview("review", review.id);
                                     }}
                                     name="Delete"
                                 />}

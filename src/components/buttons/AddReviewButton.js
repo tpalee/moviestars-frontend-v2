@@ -8,16 +8,11 @@ function AddReviewButton({handleClick, handleSubmit,name}) {
         <Button
             className="green-btn"
             handleClick={handleClick}
-            handleSubmit={handleSubmit}
-        >
+            handleSubmit={handleSubmit}>
 
-            <FaPlus
-                className="icon plus"
-            />
+            <FaPlus className="icon plus"/>
 
-            <span
-                className="btn-txt add-txt">{name}
-            </span>
+            <span className="btn-txt add-txt">{name}</span>
 
         </Button>
     );

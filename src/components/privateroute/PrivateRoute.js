@@ -9,7 +9,6 @@ function PrivateRoute({isAut, children, ...rest}){
 
     return(
         <Route {...rest}>
-
             {isAuth  ? children : history.push('/movies')}
         </Route>
     )

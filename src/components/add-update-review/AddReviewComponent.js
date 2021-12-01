@@ -26,7 +26,7 @@ function AddReviewComponent({name, state, reviewId}) {
                     const result = await axios.get(`http://localhost:8080/reviews/${reviewId}`);
                     setReviewData(result.data.review);
                 } catch (e) {
-                    console.error("reviewdata not fetched", e)
+                    console.error("reviewdata not fetched", e);
                 }
             }
             fetchReviewData();
@@ -77,22 +77,31 @@ function AddReviewComponent({name, state, reviewId}) {
 
     return (
         <section className="position-cont-col">
-            {loading && <span>loading...</span>}
+
+            {loading &&
+            <span>loading...</span>}
 
             {!loading &&
             <ShadowContainer className="review-input-cont">
+
                 <div className="title-cont">
+
                     <FaPlus className="icon addreview"/>
+
                     {name === "add" ?
-                        <h3 className="title-cont-title">Add Review</h3> :
+                        <h3 className="title-cont-title">Add Review</h3>
+                        :
                         <h3 className="title-cont-title">Update Review</h3>}
+
                 </div>
 
                 <div className="form-cont">
+
                     <form onSubmit={handleSubmit(onFormSubmit)}>
 
                         <label htmlFor="review"/>
                         Review:
+
                         <textarea
                             className="review-input textarea"
                             type="text"
@@ -113,12 +122,14 @@ function AddReviewComponent({name, state, reviewId}) {
                         </div>}
 
                         <div className="btn-cont-addreview">
+
                             <div className="rating-cont">
 
                                 <label
                                     htmlFor="movierating"
                                     className="review-input label"/>
                                 Rating:
+
                                 <input
                                     type="number"
                                     className="review-input rating"
@@ -136,31 +147,41 @@ function AddReviewComponent({name, state, reviewId}) {
                                     )}
                                 >
                                 </input>
+
                             </div>
 
                             {errors.rating &&
-                            <div className="errormessage">{errors.rating.message}</div>}
+
+                            <div className="errormessage">
+                                {errors.rating.message}
+                            </div>}
+
                             {name === 'add' ?
                                 <AddReviewButton
                                     type="submit"
                                     className="addreview-btn"
                                     name="Add Review"
-                                /> :
+                                />
+                                :
                                 <AddReviewButton
                                     type="submit"
                                     className="addreview-btn"
                                     name="Update Review"
                                 />}
+
                         </div>
+
                     </form>
 
                     <BackButton
                         className="back-btn-review"
                         handleClick={() => history.goBack()}
                     />
+
                 </div>
 
             </ShadowContainer>}
+
         </section>
     )
 }

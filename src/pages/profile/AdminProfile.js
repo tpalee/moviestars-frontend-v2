@@ -8,6 +8,7 @@ import DeleteButton from "../../components/buttons/DeleteButton";
 import ShadowContainer from "../../components/shadowcontainer/ShadowContainer";
 import '../profile/AdminProfile.css';
 import {MdDelete} from 'react-icons/md';
+import BackButton from "../../components/buttons/BackButton";
 
 
 function AdminProfile() {
@@ -29,12 +30,12 @@ function AdminProfile() {
                 const result = await axios.get('http://localhost:8080/users', {
                     headers: {
                         'Content-Type': "application/json",
-                        Authorization: `Bearer ${token}`
+                        Authorization: `Bearer ${token}`,
                     }
                 })
-                setUserData(result.data)
+                setUserData(result.data);
             } catch (e) {
-                console.error("no userData fetched" + e)
+                console.error("no userData fetched" + e);
                 toggleError(true);
             }
 
@@ -42,18 +43,19 @@ function AdminProfile() {
                 const result = await axios.get('http://localhost:8080/reviews/badlanguage', {
                     headers: {
                         'Content-Type': "application/json",
-                        Authorization: `Bearer ${token}`
+                        Authorization: `Bearer ${token}`,
                     }
                 })
-                setBadLanguageData(result.data)
+                setBadLanguageData(result.data);
             } catch (e) {
-                console.error("no Harmfull Content data fetched" + e)
+                console.error("no Harmfull Content data fetched" + e);
                 toggleError(true);
             }
 
         }
-        fetchUserData()
-        toggleLoading(false)
+
+        fetchUserData();
+        toggleLoading(false);
     }, [dataChange])
 
 
@@ -63,18 +65,18 @@ function AdminProfile() {
         try {
             //deleteitem checks if item is a number(movieId) or else a string(username) to create url
             if (typeof item == 'number') {
-                url = `http://localhost:8080/reviews/${item}`
+                url = `http://localhost:8080/reviews/${item}`;
             } else {
-                url = `http://localhost:8080/users/${item}`
+                url = `http://localhost:8080/users/${item}`;
             }
             await axios.delete(url, {
                 headers: {
                     'Content-Type': "application/json",
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${token}`,
                 }
             })
         } catch (e) {
-            console.error("sorry, can't delete", e)
+            console.error("sorry, can't delete", e);
         }
         setDataChange(true);
     }
@@ -84,54 +86,43 @@ function AdminProfile() {
         <section className="position-cont-col">
 
             {loading &&
-            <span>
-                loading...
-            </span>}
+            <span>loading...</span>}
 
             {error &&
-            <span>
-                something went wrong, no userdata fetched
-            </span>}
+            <span>something went wrong, no userdata fetched</span>}
 
             <ShadowContainer className="orange-cont">
 
-                <h1 className="moviedetails-reviews-title">
-                    Welcome {user.username}
-                </h1>
+                <h1 className="moviedetails-reviews-title">Welcome {user.username}</h1>
 
             </ShadowContainer>
 
             <ShadowContainer className="info-cont">
 
-                <h3>
-                    Admin info
-                </h3>
+                <h3>Admin info</h3>
 
-                <p>
-                    username: {user.username}
-                </p>
+                <p>username: {user.username}</p>
 
-                <p>
-                    email:{user.email}
-                </p>
+                <p className="admin-details-email">email:{user.email}</p>
+
+                <BackButton
+                    handleClick={() => {
+                        history.goBack();
+                    }}
+                />
 
             </ShadowContainer>
 
             <ShadowContainer
                 className="orange-cont">
 
-                <h1
-                    className="moviedetails-reviews-title">Userdata
-                </h1>
+                <h1 className="moviedetails-reviews-title">Userdata</h1>
 
             </ShadowContainer>
 
-            <ShadowContainer
-                className="user-info">
+            <ShadowContainer className="user-info">
 
-                <ul
-                    className="ul-users"
-                >
+                <ul className="ul-users">
 
                     {userData && userData.map((appuser) => {
                         return (
@@ -142,21 +133,16 @@ function AdminProfile() {
 
                                 <div className="userlist">
 
-                                    <p className="user-detail">
-                                        user: {appuser.username}
-                                    </p>
+                                    <p className="user-detail">user: {appuser.username}</p>
 
-                                    <p className="user-email">
-                                        email:{appuser.email}
-                                    </p>
+                                    <p className="user-email">email:{appuser.email}</p>
 
                                     <Button
                                         className="green-btn"
                                         handleClick={() => {
                                             history.push(`/user/userdetails/${appuser.username}`)
                                         }}
-                                    >
-                                        details
+                                    >details
                                     </Button>
 
                                     {appuser.username !== 'admin' &&
@@ -166,13 +152,9 @@ function AdminProfile() {
                                             deleteitem(appuser.username)
                                         }}>
 
-                                        <MdDelete
-                                            className="icon delete"
-                                        />
+                                        <MdDelete className="icon delete"/>
 
-                                        <span
-                                            className="btn-txt delete-btn">Delete
-                                        </span>
+                                        <span className="btn-txt delete-btn">Delete</span>
 
                                     </Button>}
 
@@ -185,12 +167,9 @@ function AdminProfile() {
 
             </ShadowContainer>
 
-            <ShadowContainer
-                className="orange-cont">
+            <ShadowContainer className="orange-cont">
 
-                <h1 className="moviedetails-reviews-title">
-                    Reviews with harmfull content
-                </h1>
+                <h1 className="moviedetails-reviews-title">Reviews with harmfull content</h1>
 
             </ShadowContainer>
 
@@ -210,7 +189,7 @@ function AdminProfile() {
                             }}
                         />
 
-                </section>
+                    </section>
                 )
             })}
 

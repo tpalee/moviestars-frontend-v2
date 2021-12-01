@@ -1,3 +1,4 @@
+/*CONTAINER STYLING*/
 .shadow-cont.movie-cont{
     margin:15px 15px;
     display: flex;
@@ -14,6 +15,8 @@
 
 }
 
+/*STYLING ELEMENTS*/
+
 .movielink{
     color: inherit;
     text-decoration: inherit;
@@ -26,7 +29,6 @@
     object-fit: contain;
 }
 
-
 .movie-h4{
     text-align: center;
     width:120px;
@@ -36,6 +38,9 @@
     overflow: hidden;
 }
 
+
+
+/*STAR STYLING*/
 
 .orangestar{
     color:var(--orange)

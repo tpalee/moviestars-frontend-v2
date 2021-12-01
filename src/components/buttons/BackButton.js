@@ -9,16 +9,11 @@ function BackButton({handleClick}) {
         <Button
             className="orange-btn back-btn"
             type="button"
-            handleClick={handleClick}
-        >
+            handleClick={handleClick}>
 
-            <TiArrowBack
-                className="icon back"
-            />
+            <TiArrowBack className="icon back"/>
 
-            <span
-                className="btn-txt back-txt">Back
-            </span>
+            <span className="btn-txt back-txt">Back</span>
 
         </Button>
     );

@@ -16,7 +16,7 @@ function AuthContextProvider({children}) {
 
     const history = useHistory();
 
-    // MOUNTING EFFECT
+
     useEffect(() => {
 
         // get JWT

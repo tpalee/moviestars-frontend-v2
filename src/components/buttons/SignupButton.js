@@ -8,16 +8,11 @@ function SignupButton({handleClick, handleSubmit,name}) {
         <Button
             className="green-btn signup-btn"
             handleClick={handleClick}
-            handleSubmit={handleSubmit}
-        >
+            handleSubmit={handleSubmit}>
 
-            <FaUserPlus
-                className="user plus"
-            />
+            <FaUserPlus className="user plus"/>
 
-            <span
-                className="btn-txt add-txt">{name}
-            </span>
+            <span className="btn-txt add-txt">{name}</span>
 
         </Button>
     );
